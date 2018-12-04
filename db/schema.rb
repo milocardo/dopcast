@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_201602) do
     t.string "category"
     t.string "language"
     t.text "description"
-    t.string "episode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_201602) do
   end
 
   add_foreign_key "episodes", "podcasts"
-  add_foreign_key "playlists", "episodes"
+  add_foreign_key "playlists","episodes"
   add_foreign_key "playlists", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "subscriptions", "podcasts"
