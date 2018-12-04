@@ -1,4 +1,4 @@
 class Subscription < ApplicationRecord
-  belongs_to :podcast
+  has_many :podcasts
   belongs_to :user
 end
