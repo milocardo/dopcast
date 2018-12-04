@@ -6,11 +6,11 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 $light-purple;
 $font-size-base: 18px;
 
 // Colors
-$gray-base:       $gray;
+$gray-base:       $white;
 $brand-primary:   $blue;
 $brand-success:   $green;
 $brand-info:      $yellow;
@@ -51,3 +51,6 @@ $border-radius-small: 2px;
 }
 
 // Override other variables below!
+.navbar-fixed-top {
+	position: sticky !important;
+}
