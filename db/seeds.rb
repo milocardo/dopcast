@@ -23,7 +23,9 @@ puts 'Creating podcasts...'
 
 1.upto(10) do |i|
   random_image = rand(100..900)
-  Podcast.create!(image: "https://picsum.photos/200/200/?#{random_image}",title: "Podcast #{i}", category: "Science", language: "portuguese", description: "Lorem ipsum dolor")
+  language = ["Portuguese", "French", "Spanish"].sample
+  category = ["Science", "Music", "Economy"].sample
+  Podcast.create!(image: "https://picsum.photos/200/200/?#{random_image}",title: "Podcast #{i}", category: "#{category}", language: "#{language}", description: "Lorem ipsum dolor")
 end
 
 puts 'Creating episodes...'

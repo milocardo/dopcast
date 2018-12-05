@@ -1,0 +1,21 @@
+<h1>Index SEARCH Test Page</h1>
+<h2>Podcasts</h2>
+<div class="container">
+  <div class="arrow-left">
+    <i class="icon-angle-left"></i>
+  </div>
+  <% @results.each do |result| %>
+  <p><%= image_tag result.searchable.image %></p>
+  <p>Title: <%= result.searchable.title %></p>
+  <p>Category: <%= result.searchable.category %></p>
+  <p>Language: <%= result.searchable.language %></p>
+  <p>Description: <%= result.searchable.description %></p>
+  <% end %>
+  <div class="arrow-right">
+    <i class="icon-angle-right"></i>
+  </div>
+</div>
+<h2>Episodes</h2>
+
+
+
