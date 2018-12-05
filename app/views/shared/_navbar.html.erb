@@ -22,6 +22,7 @@
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
  -->
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -57,9 +58,6 @@
     </div>
     <% else %>
 
-    <!-- Sidebar -->
-<!--     <%= render "shared/sidebar" %> -->
-
     <!-- Login link (when logged out) -->
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "log-button" %>
     <% end %>
@@ -77,4 +75,3 @@
     </div>
   </div>
 </div>
-
