@@ -9,6 +9,15 @@ class PlaylistsController < ApplicationController
     set_playlist
   end
 
+  def list_playlists
+    @episodes = current_user.playlists
+  end
+
+  def list_friends_episodes
+    @user = User.find(params[:id])
+    @episodes = @user.playlists
+  end
+
   def new
     @playlist = Playlist.new
   end

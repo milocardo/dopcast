@@ -8,6 +8,11 @@ class SubscriptionsController < ApplicationController
     @podcasts = current_user.podcasts
   end
 
+  def list_friends_podcasts
+    @user = User.find(params[:id])
+    @podcasts = @user.podcasts
+  end
+
   def new
     @subscription = Subscription.new
   end
