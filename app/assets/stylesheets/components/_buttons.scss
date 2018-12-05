@@ -1,0 +1,54 @@
+// BUTTONS FOR LOG IN //
+.log-button{
+  color: $white;
+  border: 1.5px solid $white;
+  padding: 7px 30px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  background-color: $light-purple;
+  text-decoration: none;
+}
+.log-button:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: $orange;
+  border: 1.5px solid $orange;
+}
+
+// BUTTONS FOR OTHER SIMPLE ACTIONS //
+.simple-button{
+  color: $purple;
+  border: 1.5px solid $white;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background-color: $white !important;
+  text-decoration: none;
+  font: inherit;
+  display: block;
+  margin-bottom: 5px;
+}
+.simple-button:hover{
+  opacity: 1;
+  text-decoration: none;
+  border: 2px solid $purple;
+}
+
+
+// OVERWRITTING BOOTSTRAP BTN //
+.btn{
+  color: $purple;
+  border: 1.5px solid $light-purple;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background-color: $white !important;
+  text-decoration: none;
+  font: inherit;
+  display: block;
+  margin-bottom: 10px;
+}
+.btn:hover{
+  opacity: 1;
+  text-decoration: none;
+  border: 2px solid $purple;
+}
