@@ -1,2 +1,23 @@
 <h1>Podcast SHOW Test Page</h1>
 <%= image_tag @podcast.image %>
+
+<% if current_user.liked? likeable %>
+  <%= form_tag unlike_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), method: :post, remote: true do %>
+    <% button_tag class: 'btn btn-block liked' do %>
+      <%= fa_icon 'thumbs-up' %> unlike
+    <% end %>
+  <% end %>
+<% else %>
+  <%= form_tag like_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), remote: true do %>
+    <% button_tag class: 'btn btn-block' do %>
+      <%= fa_icon 'thumbs-up' %> like
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), method: :post, remote: true do %>
+  <div class="form-group">
+    <%= text_area_tag :comment_text, nil, placeholder: 'Enter Comment', class: 'form-control' %>
+  </div>
+  <%= submit_tag :comment, class: 'btn btn-primary' %>
+<% end %>
