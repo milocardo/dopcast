@@ -22,10 +22,11 @@
     color: #FFA047;
 }
 
-.container {
+.container-text {
     margin-left: 160px; /* Same as the width of the sidenav */
     padding: 0px 10px;
 }
+
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
