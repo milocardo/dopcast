@@ -1,1 +1,20 @@
 <h1>Index SEARCH Test Page</h1>
+<h2>Podcasts</h2>
+<div class="container">
+  <div class="arrow-left">
+    <i class="icon-angle-left"></i>
+  </div>
+  <% @podcasts.each do |podcast| %>
+  <p><%= image_tag podcast.image %></p>
+  <p>Title: <%= podcast.title %></p>
+  <p>Category: <%= podcast.category %></p>
+  <p>Language: <%= podcast.language %></p>
+  <p>Description: <%= podcast.description %></p>
+  <% end %>
+  <div class="arrow-right">
+    <i class="icon-angle-right"></i>
+  </div>
+</div>
+<h2>Episodes</h2>
+
+
