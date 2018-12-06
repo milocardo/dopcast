@@ -1,4 +1,4 @@
-<h1>Podcast SHOW Test Page</h1>
+<h1><%= @podcast.title %></h1>
 <%= image_tag @podcast.image %>
 <%= render 'comments/form_podcasts', commentable: @podcast %>
 

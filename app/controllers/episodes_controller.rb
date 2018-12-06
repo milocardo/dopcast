@@ -8,23 +8,31 @@ class EpisodesController < ApplicationController
     @podcast = Podcast.find(@episode.podcast_id)
   end
 
-  def add_new_comment
-    @episode = Episode.find(params[:id])
-    @episode.comments << Episode.new(params[:comment])
-    # redirect_to :action => :show, :id => @episode
-    redirect_to episode_path(@episode)
-  end
+  # def add_new_comment
+  #   @episode = Episode.find(params[:id])
+  #   @episode.comments << Episode.new(params[:comment])
+  #   # redirect_to :action => :show, :id => @episode
+  #   redirect_to episode_path(@episode)
+  # end
 
   def upvote
     @episode = Episode.find(params[:id])
     @episode.upvote_from current_user
-    redirect_to episode_path(@episode)
+    if request.env['PATH_INFO'] == "/"
+      redirect_to episode_path(@episode)
+    else
+      redirect_to root_path
+    end
   end
 
   def downvote
     @episode = Episode.find(params[:id])
     @episode.downvote_from current_user
-    redirect_to episode_path(@episode)
+    if request.env['PATH_INFO'] == "/"
+      redirect_to episode_path(@episode)
+    else
+      redirect_to root_path
+    end
   end
 
   def new

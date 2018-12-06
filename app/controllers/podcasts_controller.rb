@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
   def index
+
     @podcasts = Podcast.all
   end
 
@@ -11,23 +12,31 @@ class PodcastsController < ApplicationController
   #   @podcasts = User.podcasts
   # end
 
-  def add_new_comment
-    @podcast = Podcast.find(params[:id])
-    @podcast.comments << Podcast.new(params[:comment])
-    # redirect_to :action => :show, :id => @podcast
-    redirect_to podcast_path(@podcast)
-  end
+  # def add_new_comment
+  #   @podcast = Podcast.find(params[:id])
+  #   @podcast.comments << Podcast.new(params[:comment])
+  #   # redirect_to :action => :show, :id => @podcast
+  #   redirect_to podcast_path(@podcast)
+  # end
 
   def upvote
     @podcast = Podcast.find(params[:id])
     @podcast.upvote_from current_user
-    redirect_to podcast_path(@podcast)
+    if request.env['PATH_INFO'] == "/"
+      redirect_to podcast_path(@podcast)
+    else
+      redirect_to root_path
+    end
   end
 
   def downvote
     @podcast = Podcast.find(params[:id])
     @podcast.downvote_from current_user
-    redirect_to podcast_path(@podcast)
+    if request.env['PATH_INFO'] == "/"
+      redirect_to podcast_path(@podcast)
+    else
+      redirect_to root_path
+    end
   end
 
   def new

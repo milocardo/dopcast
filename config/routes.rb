@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :episodes, shallow: true
     member do
       put "like" => "podcasts#upvote"
-      put "unlike" => "poscasts#downvote"
+      put "unlike" => "podcasts#downvote"
     end
   end
 
