@@ -1,6 +1,7 @@
 class PodcastsController < ApplicationController
   def index
     if params[:query].present?
+
       PgSearch::Multisearch.rebuild(Podcast)
       PgSearch::Multisearch.rebuild(Episode)
       @results = PgSearch.multisearch(params[:query])
