@@ -3,6 +3,29 @@
 <%= render 'comments/form_podcasts', commentable: @podcast %>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="podcard">
+        <%= image_tag @podcast.image, class: "img-responsive" %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <h1>Podcast name here</h1>
+      <h2>Category here</h2>
+      <h3>Language here</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <br>
+      <p> Description here</p>
+      <br>
+    </div>
+  </div>
+</div>
+
+
 <% if @podcast.comments  %>
 <% @podcast.comments.each do |comment| %>
   <p><strong><%= comment.user.email %>:</strong></p>
