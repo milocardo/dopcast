@@ -1,0 +1,7 @@
+<div class="card">
+  <div class="card-photo"> <%= cl_image_tag podcats.image %> </div>
+  <div class="card-category"> <%= podcats.category %> </div>
+  <div class="card-name"><%= link_to podcats.name, podcats_path(podcats) %></div>
+  <div class="card-address"><%= podcats.address %></div>
+  <div class="card-price">R$ <%= podcats.price %></div>
+</div>
