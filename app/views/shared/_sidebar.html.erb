@@ -1,11 +1,22 @@
 <!-- Must be called with a div class container-text inside a page!! -->
 
 <div class="sidenav">
-	<%= image_tag "avatar.png", class: "avatar-side" %>
-	<a href="#history">History</a>
-	<a href="#later">Listen Later</a>
-	<a href="#playlists">Playlists</a>
-	<a href="#liked">Liked</a>
-	<a href="#subscription">Subscriptions</a>
+	<% if user_signed_in? %>
+		<%= image_tag "avatar.png", class: "avatar-side" %>
+		<div class="sidenav-signin">
+			<a href="#home">Home</a>
+			<a href="#later">Trending</a>
+			<a href="#history">History</a>
+			<a href="#later">Listen Later</a>
+			<a href="#playlists">Playlists</a>
+			<a href="#liked">Liked</a>
+			<a href="#subscription">Subscriptions</a>
+		</div>
+	<% else %>
+		<div class="sidenav-signout">
+			<a href="#home">Home</a>
+			<a href="#later">Trending</a>
+		</div>
+	<% end %>
 </div>
 
