@@ -4,12 +4,10 @@
   <div class="arrow-left">
     <i class="icon-angle-left"></i>
   </div>
-  <% @results.each do |result| %>
-  <p><%= image_tag result.searchable.image %></p>
-  <p>Title: <%= result.searchable.title %></p>
-  <p>Category: <%= result.searchable.category %></p>
-  <p>Language: <%= result.searchable.language %></p>
-  <p>Description: <%= result.searchable.description %></p>
+  <% @podcasts["results"].each do |podcast| %>
+  <%= image_tag podcast["artworkUrl600"], class: "img-size" %>
+  <p>Artist: <%= podcast["artistName"] %></p>
+  <p>Collection: <%= podcast["collectionName"] %></p>
   <% end %>
   <div class="arrow-right">
     <i class="icon-angle-right"></i>
