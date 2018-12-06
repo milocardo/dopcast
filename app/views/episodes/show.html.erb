@@ -3,3 +3,27 @@
 <%= image_tag @podcast.image %><br>
 <%= @episode.title %><br>
 <%= @episode.description %><br>
+<%= render 'comments/form_episodes', commentable: @episode %>
+
+
+<% if @episode.comments  %>
+  <% @episode.comments.each do |comment| %>
+    <p><strong><%= comment.user.email %>:</strong></p>
+    <p> <%= comment.comment %></p>
+  <% end %>
+<% end %>
+
+
+<%= link_to like_episode_path(@episode), class: "like", method: :put do %>
+  <button type="button" class="btn btn-info" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= @episode.get_upvotes.size %></span>
+  </button>
+<% end %>
+
+<%= link_to unlike_episode_path(@episode), class: "like", method: :put do %>
+  <button type="button" class="btn btn-info" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= @episode.get_downvotes.size %></span>
+  </button>
+<% end %>
