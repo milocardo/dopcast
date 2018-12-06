@@ -1,11 +1,19 @@
+require 'json'
+require 'open-uri'
+
 class PodcastsController < ApplicationController
   def index
     @podcasts = Podcast.all
     if params[:query].present?
 
-      PgSearch::Multisearch.rebuild(Podcast)
-      PgSearch::Multisearch.rebuild(Episode)
-      @results = PgSearch.multisearch(params[:query])
+      url = "https://itunes.apple.com/search?term=#{params[:query]}&entity=podcast&limit=100"
+      podcasts_serialized = open(url).read
+      @podcasts = JSON.parse(podcasts_serialized)
+
+      # url = "https://itunes.apple.com/search?term=#{params[:query]}&entity=podcast-episode&limit=100"
+      # episodes_serialized = open(url).read
+      # @episodes = JSON.parse(episodes_serialized)
+
     else
       @podcasts = Podcast.all
     end
