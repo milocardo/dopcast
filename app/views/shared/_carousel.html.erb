@@ -1,0 +1,39 @@
+<div class="carousel">
+  <div class="contain">
+    <div class="row">
+      <div class="row__inner">
+        <% @podcasts["results"].each do |podcast| %>
+          <div class="tile">
+          <div class="tile__media">
+          <div class="tile__img"> <%= image_tag podcast["artworkUrl600"], class: "img-size" %> </div>
+          </div>
+          <div class="tile__details"> Artist: <%= podcast["artistName"] %>
+          <div class="tile__title">Name: <%= podcast["collectionName"] %></div>
+          </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+  <div class="row">
+    <div class="row__inner">
+
+      <div class="tile">
+
+        <div class="tile__media">
+          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg" alt=""  />
+        </div>
+        <div class="tile__details">
+          <div class="tile__title">
+            Top Gear
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> -->
