@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :episodes, through: :playlists
   has_many :podcasts, through: :subscriptions
   has_many :reviews
+  acts_as_voter
 end
