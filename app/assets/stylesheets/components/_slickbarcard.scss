@@ -13,7 +13,6 @@
 // }
 
 .card-category {
-  position: absolute;
   top: 6px;
   left: 25px;
   font-size: 25px;
@@ -33,13 +32,13 @@
   padding-top: 6px;
 }
 
-.card-address {
+.card-language {
   top: 135px;
   font-size: 15px;
   padding-left: 6px;
 }
 
-.card-price {
+.card-description {
   top: 155px;
   left: 10px;
   font-size: 20px;
@@ -71,7 +70,7 @@
 
 img {
   height: auto;
-  max-width: 100%;
+  width: 100%;
   vertical-align: middle;
 
 }
@@ -115,7 +114,7 @@ img {
   padding-bottom: 25px;
 }
 
-.card {
+.slickbarcard {
   background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);

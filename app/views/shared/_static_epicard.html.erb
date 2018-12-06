@@ -1,0 +1,15 @@
+
+
+
+<% @results.each do |result| %>
+  <div class="static-epicard">
+    <div class="epicard-photo"> <%= image_tag result.searchable.image %> </div>
+    <div class="epicard-name">Title: <%= result.searchable.title %></div>
+    <div class="epicard-category"> Category: <%= result.searchable.category %> </div>
+    <div class="epicard-language">Language: <%= result.searchable.language %></div>
+    <div class="epicard-description">Description: <%= result.searchable.description %></div>
+  </div>
+<% end %>
+
+
+
