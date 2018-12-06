@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
       comment.user = current_user
     end
     @comment.save
+    if @commentable_type == "Episode"
+      redirect_to episode_path(Episode.find(params[:episode_id]))
+    else
+      redirect_to podcast_path(Podcast.find(params[:podcast_id]))
+    end
   end
 
   def destroy

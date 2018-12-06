@@ -1,32 +1,59 @@
-<!-- Leave sidebar and div container-text commented! Content and footer, ok!
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<p class="simple-button">Find me in app/views/pages/home.html.erb</p>
+<br>
+<br>
+<br>
+<br>
 
-<%= render 'shared/sidebar' %>
+<h3>Our Podcasts</h3>
+  <% @podcasts.each do |podcast| %>
+  <%= link_to podcast.title, podcast_path(podcast) %><br>
+  <%= image_tag podcast.image %><br>
 
-<div class="container-text"> -->
+<%= link_to like_podcast_path(podcast), class: "like", method: :put do %>
+  <button type="button" class="btn btn-info" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= podcast.get_upvotes.size %></span>
+  </button>
+<% end %>
 
-	<h1>Pages#home</h1>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p class="simple-button">Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
-	<p>Find me in app/views/pages/home.html.erb</p>
+<%= link_to unlike_podcast_path(podcast), class: "like", method: :put do %>
+  <button type="button" class="btn btn-info" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= podcast.get_downvotes.size %></span>
+  </button>
+<% end %>
+<br>
+<br>
+  <% end %>
+<br>
+<br>
 
-<!-- </div> -->
 
+
+<h3>Our Episodes</h3>
+<% @episodes.each do |episode| %>
+<p><%= episode.podcast.title %> - <%= link_to episode.title, episode_path(episode) %></p>
+<%= image_tag episode.podcast.image %><br>
+<%= episode.description %><br>
+
+<%= link_to like_episode_path(episode), class: "like", method: :put do %>
+  <button type="button" class="btn btn-info" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= episode.get_upvotes.size %></span>
+  </button>
+<% end %>
+
+
+<%= link_to unlike_episode_path(episode), class: "like", method: :put do %>
+  <button type="button" class="btn btn-info" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+    <span class="badge"><%= episode.get_downvotes.size %></span>
+  </button>
+<% end %>
+<br>
+<br>
+<% end %>
 
 <%= render 'shared/footer' %>
