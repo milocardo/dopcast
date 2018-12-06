@@ -4,28 +4,14 @@
   <div class="arrow-left">
     <i class="icon-angle-left"></i>
   </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-12">
-
-      <%= render "shared/static-podcard" %>
-<!--       <% @results.each do |result| %>
-      <p><%= image_tag result.searchable.image %></p>
-      <p>Title: <%= result.searchable.title %></p>
-      <p>Category: <%= result.searchable.category %></p>
-      <p>Language: <%= result.searchable.language %></p>
-      <p>Description: <%= result.searchable.description %></p>
-      <% end %> -->
-
-    </div>
-
+  <% @podcasts["results"].each do |podcast| %>
+  <%= image_tag podcast["artworkUrl600"], class: "img-size" %>
+  <p>Artist: <%= podcast["artistName"] %></p>
+  <p>Collection: <%= podcast["collectionName"] %></p>
+  <% end %>
   <div class="arrow-right">
     <i class="icon-angle-right"></i>
   </div>
 </div>
 <h2>Episodes</h2>
-  <div class="col-xs-12 col-sm-6 col-md-12">
-
-    <%= render "shared/slickbar" %>
-  </div>
-
-
+<%= render "shared/slickbar" %>
