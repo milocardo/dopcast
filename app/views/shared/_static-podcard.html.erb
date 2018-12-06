@@ -1,0 +1,15 @@
+
+
+
+<% @results.each do |result| %>
+  <div class="static-podcard">
+    <div class="podcard-photo"> <%= image_tag result.searchable.image %> </div>
+    <div class="podcard-name">Title: <%= result.searchable.title %></div>
+    <div class="podcard-category"> Category: <%= result.searchable.category %> </div>
+    <div class="podcard-language">Language: <%= result.searchable.language %></div>
+    <div class="podcard-description">Description: <%= result.searchable.description %></div>
+  </div>
+<% end %>
+
+
+
