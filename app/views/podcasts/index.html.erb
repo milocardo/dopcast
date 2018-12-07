@@ -1,21 +1,18 @@
-<h1>Index SEARCH Test Page</h1>
-<h2>Podcasts</h2>
-
-  <% @podcasts["results"].each do |podcast| %>
-  <%= image_tag podcast["artworkUrl600"], class: "img-size" %>
-  <p>Artist: <%= podcast["artistName"] %></p>
-  <p>Collection: <%= podcast["collectionName"] %></p>
-  <% end %>
-
-<h2>Episodes</h2>
-
-  <% @episodes["results"].each do |episode| %>
-  <%= image_tag episode["artworkUrl100"], class: "img-size" %>
-  <p>Artist: <%= episode["artistName"] %></p>
-  <p>Collection: <%= episode["collectionName"] %></p>
-  <p>Track Name: <%= episode["trackName"] %></p>
-  <p>Description: <%= episode["description"] %></p>
-  <% end %>
-
-<%= render "shared/slickbar" %>
-
+<%= render "shared/sidebar" %>
+<div class="container-text">
+  <h2>Here are the results of your search</h2>
+  <h3>Results for Podcasts</h3>
+  <div class="container">
+    <div class="arrow-left">
+      <i class="icon-angle-left"></i>
+    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <%= render "shared/carousel" %>
+        </div>
+    <div class="arrow-right">
+      <i class="icon-angle-right"></i>
+    </div>
+  </div>
+  <h3>Results for Episodes</h3>
+  <%= render "shared/slickbar" %>
+</div>
