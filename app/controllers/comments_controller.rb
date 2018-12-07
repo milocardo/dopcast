@@ -16,8 +16,12 @@ class CommentsController < ApplicationController
         @comment.save
         redirect_to podcast_path(Podcast.find(params[:podcast_id]))
       end
-    else
-      redirect_to podcast_path(params[:podcast_id])
+    else 
+      if @commentable_type == "Episode"
+        redirect_to episode_path(params[:episode_id])
+      else
+        redirect_to podcast_path(params[:podcast_id]) 
+      end
     end
   end
 

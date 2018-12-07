@@ -60,9 +60,9 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
     @podcast.upvote_from current_user
     if request.env['PATH_INFO'] == "/"
-      redirect_to podcast_path(@podcast)
-    else
       redirect_to root_path
+    else
+      redirect_to podcast_path(@podcast)
     end
   end
 
@@ -70,9 +70,9 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
     @podcast.downvote_from current_user
     if request.env['PATH_INFO'] == "/"
-      redirect_to podcast_path(@podcast)
-    else
       redirect_to root_path
+    else
+      redirect_to podcast_path(@podcast)
     end
   end
 

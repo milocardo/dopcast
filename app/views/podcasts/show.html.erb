@@ -19,13 +19,12 @@
                 </button>
               <% end %>
 
-              <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
-                <button type="button" class="btn btn-info" aria-label="Left Align">
-                  <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
-                  <span class="badge"><%= @podcast.get_downvotes.size %></span>
-                </button>
-              <% end %>
-            </div>
+            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+              <button type="button" class="btn btn-info" aria-label="Left Align">
+                <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+                <span class="badge"><%= @podcast.get_downvotes.size %></span>
+              </button>
+            <% end %>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -36,6 +35,7 @@
           </div>
         </div>
       </div>
+
 
 <!--     <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
       <button type="button" class="btn btn-info" aria-label="Left Align">
@@ -67,6 +67,7 @@
       <% end %>
     </div>
   </div>
+
 
 
 
