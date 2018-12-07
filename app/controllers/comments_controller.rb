@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       comment.comment = params[:comment_text]
       comment.user = current_user
     end
-    @comment.save
+    @comment.save unless @comment.comment == nil
     if @commentable_type == "Episode"
       redirect_to episode_path(Episode.find(params[:episode_id]))
     else
