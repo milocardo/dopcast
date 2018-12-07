@@ -1,6 +1,7 @@
 $duration: 450ms;
-$tileWidth: 250px;
-$tileHeight: ($tileWidth / (16/9));
+$tileWidth: 200px;
+$tileHeight: 200px;
+// $tileHeight: ($tileWidth / (16/9));
 $iconSize: 50px;
 $growFactor: 1.5;
 $moveLeft: -($tileWidth * ($growFactor - 1) / 2);
@@ -15,8 +16,8 @@ $moveRight: $tileWidth * ($growFactor - 1);
   width: 100%;
 }
 
-.row {
-  overflow: scroll;
+.scroll-row {
+  overflow-x: scroll;
   width: 100%;
 }
 
@@ -90,8 +91,8 @@ $moveRight: $tileWidth * ($growFactor - 1);
     z-index: 2;
   }
 
-  .tile:hover & {
-    opacity: 1;
+  .tile__details:hover & {
+    opacity: 1 black;
   }
 }
 

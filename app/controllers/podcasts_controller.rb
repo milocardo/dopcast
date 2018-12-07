@@ -10,10 +10,9 @@ class PodcastsController < ApplicationController
       podcasts_serialized = open(url).read
       @podcasts = JSON.parse(podcasts_serialized)
 
-      # url = "https://itunes.apple.com/search?term=#{params[:query]}&entity=podcast-episode&limit=100"
-      # episodes_serialized = open(url).read
-      # @episodes = JSON.parse(episodes_serialized)
-
+      url = "https://itunes.apple.com/search?term=#{params[:query]}&kind=podcast-&limit=100"
+      episodes_serialized = open(url).read
+      @episodes = JSON.parse(episodes_serialized)
     else
       @podcasts = Podcast.all
     end

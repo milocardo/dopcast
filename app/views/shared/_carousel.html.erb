@@ -1,23 +1,21 @@
 <div class="carousel">
   <div class="contain">
-    <div class="row">
+    <div class="scroll-row">
       <div class="row__inner">
         <% @podcasts["results"].each do |podcast| %>
           <div class="tile">
-          <div class="tile__media">
-          <div class="tile__img"> <%= image_tag podcast["artworkUrl600"], class: "img-size" %> </div>
-          </div>
-          <div class="tile__details"> Artist: <%= podcast["artistName"] %>
-          <div class="tile__title">Name: <%= podcast["collectionName"] %></div>
-          </div>
+            <div class="tile__media">
+              <div class="tile__img"> <%= image_tag podcast["artworkUrl600"], class: "img-size" %> </div>
+            </div>
+            <div class="tile__details"> Artist: <%= podcast["artistName"] %>
+              <div class="tile__title">Name: <%= podcast["collectionName"] %></div>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
 
 <!--
   <div class="row">
