@@ -1,17 +1,25 @@
 <h1>Index SEARCH Test Page</h1>
 <h2>Podcasts</h2>
-<div class="container">
-  <div class="arrow-left">
-    <i class="icon-angle-left"></i>
-  </div>
+
   <% @podcasts["results"].each do |podcast| %>
   <%= image_tag podcast["artworkUrl600"], class: "img-size" %>
   <p>Artist: <%= podcast["artistName"] %></p>
   <p>Collection: <%= podcast["collectionName"] %></p>
   <% end %>
-  <div class="arrow-right">
-    <i class="icon-angle-right"></i>
-  </div>
-</div>
+
 <h2>Episodes</h2>
+
+  <% @episodes["results"].each do |episode| %>
+  <%= image_tag episode["artworkUrl100"], class: "img-size" %>
+  <p>Artist: <%= episode["artistName"] %></p>
+  <p>Collection: <%= episode["collectionName"] %></p>
+  <p>Track Name: <%= episode["trackName"] %></p>
+  <p>Description: <%= episode["description"] %></p>
+  <% end %>
+
+
+
+
+
+
 <%= render "shared/slickbar" %>
