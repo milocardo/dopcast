@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       put "like" => "podcasts#upvote"
       put "unlike" => "podcasts#downvote"
     end
+    member do
+      get "show_by_id/:id" => "podcasts#show_by_id", as: "show_by_id"
+    end
   end
 
   resources :episodes, only: [] do

@@ -10,7 +10,7 @@
 
 <h3>Our Podcasts</h3>
   <% @podcasts.each do |podcast| %>
-  <%= link_to podcast.title, podcast_path(podcast) %><br>
+  <%= link_to podcast.collection_name, podcast_path(podcast) %><br>
   <%= image_tag podcast.image %><br>
 
 <%= link_to like_podcast_path(podcast), class: "like", method: :put do %>
