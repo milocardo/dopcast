@@ -18,6 +18,7 @@ $moveRight: $tileWidth * ($growFactor - 1);
 
 .scroll-row {
   overflow-x: scroll;
+  overflow-y: hidden;
   width: 100%;
 }
 
@@ -99,7 +100,7 @@ $moveRight: $tileWidth * ($growFactor - 1);
 .tile__title {
   position: absolute;
   bottom: 0;
-  padding: 10px;
+  // padding: 10px;
 }
 
 // *
