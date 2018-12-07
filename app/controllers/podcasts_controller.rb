@@ -10,9 +10,18 @@ class PodcastsController < ApplicationController
       podcasts_serialized = open(url).read
       @podcasts = JSON.parse(podcasts_serialized)
 
-      url = "https://itunes.apple.com/search?term=#{params[:query]}&kind=podcast-&limit=100"
-      episodes_serialized = open(url).read
-      @episodes = JSON.parse(episodes_serialized)
+      @podcasts["results"].each do |podcast|
+        Podcast.create(image: podcast["artworkUrl600"],
+          collection_id: podcast["collectionId"],
+          collection_name:podcast["collectionName"],
+          artist_name: podcast["artistName"],
+          genre: podcast["primaryGenreName"],
+          country: podcast["country"],
+          )
+      end
+      PgSearch::Multisearch.rebuild(Podcast)
+      PgSearch::Multisearch.rebuild(Episode)
+      @results = PgSearch.multisearch(params[:query])
     else
       @podcasts = Podcast.all
     end
@@ -22,6 +31,20 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
   end
 
+  def show_by_id
+    if params[:id].present?
+
+      url = "https://itunes.apple.com/search?term=#{params[:id]}"
+      podcast_serialized = open(url).read
+      @podcast_id = JSON.parse(podcast_serialized)
+
+      url = "https://itunes.apple.com/search?term=#{params[:id]}"
+      episodes_serialized = open(url).read
+      @episode = JSON.parse(episodes_serialized)
+    else
+      @podcast = Podcast.find(params[:id])
+    end
+  end
   # def index_subscription
   #   @podcasts = User.podcasts
   # end
@@ -65,6 +88,6 @@ class PodcastsController < ApplicationController
   private
 
   def podcast_params
-    params.require(:podcast).permit(:title, :author)
+    params.require(:podcast).permit(:image, :collection_id, :collection_name, :artist_name, :genre, :country)
   end
 end

@@ -1,5 +1,5 @@
 <%= render "shared/sidebar" %>
-  <div class="container-text">    
+  <div class="container-text">
     <div class="container">
       <div class="podcard-show">
         <div class="row">
@@ -9,9 +9,9 @@
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
-              <h1><%= @podcast.title %></h1>
-              <h2><%= @podcast.category %></h2>
-              <h3><%= @podcast.language %></h3>
+              <h1><%= @podcast.collection_name %></h1>
+              <h2><%= @podcast.artist_name %></h2>
+              <h3><%= @podcast.country %></h3>
               <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
                 <button type="button" class="btn btn-info" aria-label="Left Align">
                   <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
@@ -30,12 +30,12 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
               <br>
-              <p> <%= @podcast.description %></p>
+              <p> <%= @podcast.country %></p>
               <br>
             </div>
           </div>
         </div>
-      </div>  
+      </div>
 
 <!--     <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
       <button type="button" class="btn btn-info" aria-label="Left Align">
@@ -52,12 +52,12 @@
     <% end %> -->
 
     <div class="reviews">
-    <!-- 
-      <h1><%= @podcast.title %></h1>
+    <!--
+      <h1><%= @podcast.collection_name %></h1>
       <%= image_tag @podcast.image %> -->
-      <h3>Do you like <%= @podcast.title %> ? Leave a comment below!</h3>
+      <h3>Do you like <%= @podcast.collection_name %> ? Leave a comment below!</h3>
       <%= render 'comments/form_podcasts', commentable: @podcast %>
-      
+
       <% if @podcast.comments  %>
       <% @podcast.comments.each do |comment| %>
         <p><strong><%= comment.user.email %> :</strong></p>
@@ -65,8 +65,8 @@
         <br>
         <% end %>
       <% end %>
-    </div>  
+    </div>
   </div>
-    
+
 
 
