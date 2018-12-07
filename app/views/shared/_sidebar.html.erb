@@ -4,7 +4,7 @@
 	<% if user_signed_in? %>
 		<%= image_tag "avatar.png", class: "avatar-side" %>
 		<div class="sidenav-signin">
-			<a href="#home">Home</a>
+			<%= link_to "Home", root_path %>
 			<a href="#later">Trending</a>
 			<a href="#history">History</a>
 			<a href="#later">Listen Later</a>
