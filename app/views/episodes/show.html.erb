@@ -1,5 +1,5 @@
 <%= render "shared/sidebar" %>
-  <div class="container-text"> 
+  <div class="container-text">
     <%= render 'comments/form_podcasts', commentable: @podcast %>
     <h1><%= @episode.podcast.title %></h1><br>
     <%= image_tag @podcast.image %><br>
