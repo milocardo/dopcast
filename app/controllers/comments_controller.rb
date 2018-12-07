@@ -8,11 +8,16 @@ class CommentsController < ApplicationController
       comment.comment = params[:comment_text]
       comment.user = current_user
     end
-    @comment.save
-    if @commentable_type == "Episode"
-      redirect_to episode_path(Episode.find(params[:episode_id]))
+    if !params[:comment_text].empty?
+      if @commentable_type == "Episode"
+        @comment.save 
+        redirect_to episode_path(Episode.find(params[:episode_id]))
+      else
+        @comment.save
+        redirect_to podcast_path(Podcast.find(params[:podcast_id]))
+      end
     else
-      redirect_to podcast_path(Podcast.find(params[:podcast_id]))
+      redirect_to podcast_path(params[:podcast_id])
     end
   end
 
