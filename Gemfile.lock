@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,7 +51,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     acts_as_commentable (4.0.2)
-    acts_as_follower (0.2.1)
     acts_as_votable (0.12.0)
     arel (9.0.0)
     autoprefixer-rails (9.4.0)
@@ -251,7 +258,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable
-  acts_as_follower
+  acts_as_follower!
   acts_as_votable (~> 0.12.0)
   autoprefixer-rails
   bootsnap
