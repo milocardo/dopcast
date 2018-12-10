@@ -1,53 +1,70 @@
+<%= render "shared/sidebar" %>
+<div class="container-text"> 
+  <div class="container">
+    <div class="podcard-show-epi">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="podcard">
+            <%= image_tag @podcast.image, class: "img-responsive" %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <h1>Name: <%= @episode.podcast.title %></h1>
+          <h2>Episode: <%= @episode.title %></h2>
+          <h3>Language: <%= @episode.podcast.language %></h3>
+          <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+            <button type="button" class="btn btn-info" aria-label="Left Align">
+              <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+              <span class="badge"><%= @podcast.get_upvotes.size %></span>
+            </button>
+          <% end %>
 
-<h1><%= @episode.podcast.title %></h1><br>
-<%= image_tag @podcast.image %><br>
-<%= @episode.title %><br>
-<%= @episode.description %><br>
-<%= render 'comments/form_episodes', commentable: @episode %>
+          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+            <button type="button" class="btn btn-info" aria-label="Left Align">
+              <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+              <span class="badge"><%= @podcast.get_downvotes.size %></span>
+            </button>
+          <% end %>
+        </div>
+      </div>
 
+      <div class="pod-descript">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <p><%= @episode.description %></p>
+          </div>
+        </div>
+      </div>  
+    </div>  
 
-<% if @episode.comments  %>
-  <% @episode.comments.each do |comment| %>
-    <p><strong><%= comment.user.email %>:</strong></p>
-    <p> <%= comment.comment %></p>
-  <% end %>
-<% end %>
-
-
-<%= link_to like_episode_path(@episode), class: "like", method: :put do %>
+<!--   <%= link_to like_episode_path(@episode), class: "like", method: :put do %>
   <button type="button" class="btn btn-info" aria-label="Left Align">
     <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
     <span class="badge"><%= @episode.get_upvotes.size %></span>
   </button>
-<% end %>
+  <% end %>
 
-<%= link_to unlike_episode_path(@episode), class: "like", method: :put do %>
+  <%= link_to unlike_episode_path(@episode), class: "like", method: :put do %>
   <button type="button" class="btn btn-info" aria-label="Left Align">
     <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
     <span class="badge"><%= @episode.get_downvotes.size %></span>
   </button>
-<% end %>
+  <% end %> -->
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <div class="podcard">
-        <%= image_tag @podcast.image, class: "img-responsive" %>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <h1><%= @episode.title %></h1>
-      <h2><%= @episode.podcast.title %><br></h2>
-      <h3>Language here</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <br>
-      <p><%= @episode.description %></p>
-      <br>
-    </div>
+  <div class="reviews">
+    <!-- 
+      <h1><%= @podcast.title %></h1>
+      <%= image_tag @podcast.image %> -->
+      <h3>Did you like <%= @episode.title %> ? Leave a comment below!</h3>
+      <%= render 'comments/form_episodes', commentable: @episode %>
+      
+      <% if @episode.comments  %>
+      <% @episode.comments.each do |comment| %>
+        <p><strong><%= comment.user.email %> :</strong></p>
+        <p><%= comment.comment %></p>
+        <br>
+        <% end %>
+      <% end %>
+    </div>  
   </div>
 </div>
-

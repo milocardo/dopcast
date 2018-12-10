@@ -13,6 +13,47 @@
   background-color: black;
 }
 
+.epicard-photo {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
+}
+
+.epicard-title {
+  top: 35px;
+  font-size: 25px;
+  font-weight: 30;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-left: 6px;
+  padding-top: 6px;
+}
+.epicard-category {
+  top: 135px;
+  font-size: 15px;
+  padding-left: 6px;
+  color : white;
+  font-weight: 3000;
+}
+
+.epicard-language {
+  top: 135px;
+  font-size: 15px;
+  padding-left: 6px;
+}
+.epicard-description {
+  top: 155px;
+  font-size: 10px;
+  text-align: left;
+  padding: 6px;
+}
+
 .display-epicard{
   position: fixed;
   top: 50%;

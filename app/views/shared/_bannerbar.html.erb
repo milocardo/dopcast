@@ -1,0 +1,12 @@
+<div class="banner-form">
+  <div class="input-group">
+    <%= form_tag podcasts_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control-banner",
+      placeholder: "Search"
+      %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,13 @@
 .img-responsive {
   width: 100%;
 }
+
+.img-size {
+  width: 200px;
+  height: 200px;
+  display: block;
+
+  img {
+    max-width: 100%;
+  }
+}

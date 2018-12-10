@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     member do
       post "follow" => "podcasts#follow"
       post "unfollow" => "podcasts#unfollow"
+      get "show_by_id/:id" => "podcasts#show_by_id", as: "show_by_id"
+
     end
   end
 
