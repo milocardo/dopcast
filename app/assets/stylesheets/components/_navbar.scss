@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: $purple;
+  border-bottom: 5px;
+  border-color: $orange;
 }
 
 /* Logo */
@@ -90,12 +92,20 @@
 
 .form-control {
   background-color: $light-purple;
-  border-color: $light-purple;
+  border-style: inset;
+  border-color: $purple;
   color: $white;
   height: 40px;
   padding: 6px 12px;
   font-size: 18px;
-  border: 0px solid #ccc;
+}
+
+.glyphicon {
+  color: $light-purple;
+}
+
+#home .navbar-form {
+    display: none;
 }
 
 .input-group-btn {

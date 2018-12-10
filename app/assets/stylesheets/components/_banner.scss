@@ -9,12 +9,15 @@
   align-items: center;
   width: 100%;
 }
+
 .banner h1 {
   font-size: 35px;
   font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px black;
   position: relative;
+  font-family: "Century Gothic" !important;
 }
+
 .banner p {
   font-size: 25px;
   font-weight: lighter;
