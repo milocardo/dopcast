@@ -1,0 +1,44 @@
+
+<div class="checkbox-container">
+  <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
+    <ul class="checkbox">
+
+      <div class="checkbox-column">
+        <p>Categories</p>
+          <li><input type="checkbox" id="checkboxOne" value="Categories"><!-- <label for="checkboxOne"> -->
+            <%= form.collection_check_boxes 'categories', Search.categories, :first, :last %>
+          <!-- </label> --></li>
+      </div>
+
+      <div class="checkbox-column">
+        <p>Types</p>
+          <li><input type="checkbox" id="checkboxOne" value="Types"><!-- <label for="checkboxOne"> -->
+          <%= form.collection_check_boxes 'types', Search.types, :first, :last %>
+          <!-- </label> --></li>
+      </div>
+
+      <div class="checkbox-column">
+        <p>Duration</p>
+          <li><input type="checkbox" id="checkboxOne" value="Duration"><!-- <label for="checkboxOne"> -->
+          <%= form.collection_check_boxes 'duration', Search.durations, :first, :last %>
+          <!-- </label> --></li>
+      </div>
+
+      <div class="checkbox-column">
+        <p>Languages</p>
+          <li><input type="checkbox" id="checkboxOne" value="Languages"><!-- <label for="checkboxOne"> -->
+          <%= form.collection_check_boxes 'language', Search.languages, :first, :last %>
+          <!-- </label> --></li>
+      </div>
+
+      <div class="checkbox-column">
+        <p>Sort by</p>
+          <li><input type="checkbox" id="checkboxOne" value="Sortby"><!-- <label for="checkboxOne"> -->
+          <%= form.collection_check_boxes 'sortby', Search.sortby, :first, :last %>
+          <!-- </label> --></li>
+      </div>
+
+    </ul>
+  <%= form.submit %>
+  <% end %>
+</div>

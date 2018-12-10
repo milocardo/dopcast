@@ -1,0 +1,109 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+// body {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
+//     background: #FFEFBA;
+//     /* fallback for old browsers */
+//     background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+//     /* Chrome 10-25, Safari 5.1-6 */
+//     background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+//     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// }
+
+.checkbox p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.checkbox-container {
+    // width: 900px;
+    // height: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+
+    width: 800px;
+}
+
+.checkbox-column {
+  flex-direction: column;
+  align-items: center;
+  display: inline-block;
+  padding: 10px;
+  }
+
+ul.checkbox {
+    list-style: none;
+    padding: 10px;
+    // display: inline-block;
+}
+ul.checkbox li{
+  display: inline-grid;
+}
+ul.checkbox li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 1px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 15px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.checkbox li label {
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+ul.checkbox li label::before {
+    // display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.checkbox li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.checkbox li input[type="checkbox"]:checked + label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.checkbox li input[type="checkbox"] {
+  // display: absolute;
+}
+ul.checkbox li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.checkbox li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
+}
