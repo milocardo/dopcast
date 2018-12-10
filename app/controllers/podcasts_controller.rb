@@ -78,15 +78,21 @@ class PodcastsController < ApplicationController
 
   def follow
     @podcast = Podcast.find(params[:id])
-    @current_user.follow(@podcast)
+    current_user.follow(@podcast)
     @follow = Follow.find_by(follower: @current_user, followable: @podcast)
     respond_to :js
+    respond_to do |format|
+    format.js {render inline: "location.reload();" }
+    end
   end
 
   def unfollow
     @podcast = Podcast.find(params[:id])
-    @current_user.stop_following(@podcast)
+    current_user.stop_following(@podcast)
     respond_to :js
+    respond_to do |format|
+    format.js {render inline: "location.reload();" }
+    end
   end
 
   def following?
