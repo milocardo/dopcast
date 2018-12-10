@@ -1,8 +1,22 @@
 class Podcast < ApplicationRecord
-  has_many :episodes
+  # has_many :episodes
 
   include PgSearch
-  multisearchable against: [ :title, :itunes_id, :total_episodes, :image, :publisher_original, :korean_id ]
+  multisearchable against: [ :total_episodes,
+                             :itunes_id,
+                             :image,
+                             :title,
+                             :episodes,
+                             :country,
+                             :description,
+                             :language,
+                             :korean_id,
+                             :lastest_pub_date_ms,
+                             :earliest_pub_date_ms,
+                             :publisher,
+                             :genres,
+                             :extra
+                           ]
   validates :korean_id, uniqueness: true
 
   acts_as_votable

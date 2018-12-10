@@ -11,35 +11,68 @@ class PodcastsController < ApplicationController
         "X-Mashape-Key" => "xpFi4BobqYmshRgxPvEXythBH7XAp1et0DjjsntjmRrxXROJri",
         "Accept" => "application/json"
       }
-      @podcasts["results"].each do |podcast|
-        Podcast.create(title: podcast["title_original"],
-          itunes_id: podcast["itunes_id"],
-          total_episodes:podcast["total_episodes"],
-          image: podcast["image"],
-          publisher_original: podcast["publisher_original"],
-          korean_id: podcast["id"],
-          )
-      end
 
       @episodes = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?type=episode&q=#{params[:query]}",
       headers:{
         "X-Mashape-Key" => "xpFi4BobqYmshRgxPvEXythBH7XAp1et0DjjsntjmRrxXROJri",
         "Accept" => "application/json"
       }
-      @episodes["results"].each do |episode|
-        Episode.create!(audio: episode["audio"],
-          korean_podcast_id: episode["podcast_id"],
-          itunes_id:episode["itunes_id"],
-          audio_length:episode["audio_length"],
-          description_original:episode["description_original"],
-          image: episode["image"],
-          genres: episode["genres"],
-          publisher_original: episode["publisher_original"],
-          title_original: episode["title_original"],
-          pub_date_ms: episode["pub_date_ms"],
-          podcast_title_original: episode["podcast_title_original"]
-          )
+
+      @podcasts["results"].each do |podcast_info|
+        podcast = Podcast.find_or_initialize_by(itunes_id: podcast_info['itunes_id'])
+        next if podcast.persisted?
+
+        response = HTTParty.get(
+          "https://listennotes.p.mashape.com/api/v1/podcasts/#{podcast['id']}?next_episode_pub_date=1479154463000&sort=recent_first",
+          headers: {
+            "X-Mashape-Key" => "Q0II77SpNGmshDjZ1UEWgoWhXgTdp1KOsTsjsnI2eZEFcMYwu3",
+            "Accept" => "application/json"
+          }
+        )
+
+        podcast.update(
+          total_episodes: response["total_episodes"],
+          itunes_id: response["itunes_id"],
+          image: response["image"],
+          title: response["title_original"],
+          episodes: response["episodes"],
+          country: response["country"],
+          description: response["description"],
+          language: response["language"],
+          korean_id: response["id"],
+          lastest_pub_date_ms: response["lastest_pub_date_ms"],
+          earliest_pub_date_ms: response["earliest_pub_date_ms"],
+          publisher: response["publisher"],
+          genres: response["genres"],
+          extra: response["extra"]
+        )
       end
+      # @episodes = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?type=episode&q=#{params[:query]}",
+      # headers:{
+      #   "X-Mashape-Key" => "xpFi4BobqYmshRgxPvEXythBH7XAp1et0DjjsntjmRrxXROJri",
+      #   "Accept" => "application/json"
+      # }
+      # @episodes["results"].each do |episode|
+
+      #   response = Unirest.get "https://listennotes.p.mashape.com/api/v1/episodes/#{episode['podcast_id']}?next_episode_pub_date=1479154463000&sort=recent_first",
+      #     headers:{
+      #       "X-Mashape-Key" => "Q0II77SpNGmshDjZ1UEWgoWhXgTdp1KOsTsjsnI2eZEFcMYwu3",
+      #       "Accept" => "application/json"
+      #     }
+
+      #   Episode.create!(audio: episode["audio"],
+      #     korean_podcast_id: episode["podcast_id"],
+      #     itunes_id:episode["itunes_id"],
+      #     audio_length:episode["audio_length"],
+      #     description_original:episode["description_original"],
+      #     image: episode["image"],
+      #     genres: episode["genres"],
+      #     publisher_original: episode["publisher_original"],
+      #     title_original: episode["title_original"],
+      #     pub_date_ms: episode["pub_date_ms"],
+      #     podcast_title_original: episode["podcast_title_original"]
+      #     )
+      # end
 
       PgSearch::Multisearch.rebuild(Podcast)
       PgSearch::Multisearch.rebuild(Episode)
@@ -104,7 +137,7 @@ class PodcastsController < ApplicationController
     @follow = Follow.find_by(follower: @current_user, followable: @podcast)
     respond_to :js
     respond_to do |format|
-    format.js {render inline: "location.reload();" }
+      format.js {render inline: "location.reload();" }
     end
   end
 
@@ -113,7 +146,7 @@ class PodcastsController < ApplicationController
     current_user.stop_following(@podcast)
     respond_to :js
     respond_to do |format|
-    format.js {render inline: "location.reload();" }
+      format.js {render inline: "location.reload();" }
     end
   end
 
@@ -134,6 +167,18 @@ class PodcastsController < ApplicationController
   private
 
   def podcast_params
-    params.require(:podcast).permit(:image, :collection_id, :collection_name, :artist_name, :genre, :country)
+    params.require(:podcast).permit(:itunes_id,
+     :image,
+     :title,
+     :episodes,
+     :country,
+     :description,
+     :language,
+     :korean_id,
+     :lastest_pub_date_ms,
+     :earliest_pub_date_ms,
+     :publisher,
+     :genres,
+     :extra)
   end
 end

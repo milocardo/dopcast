@@ -9,9 +9,9 @@
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
-              <h1><%= @podcast.collection_name %></h1>
-              <h2><%= @podcast.artist_name %></h2>
-              <h3><%= @podcast.country %></h3>
+              <h1><%= @podcast.title %></h1>
+              <h2><%= @podcast.publisher %></h2>
+              <h3><%= @podcast.description %></h3>
           </div>
 
 <!--           list inline class here -->
@@ -45,9 +45,9 @@
 
     <div class="reviews">
     <!--
-      <h1><%= @podcast.collection_name %></h1>
+      <h1><%= @podcast.title %></h1>
       <%= image_tag @podcast.image %> -->
-      <h3>Do you like <%= @podcast.collection_name %> ? Leave a comment below!</h3>
+      <h3>Do you like <%= @podcast.title %> ? Leave a comment below!</h3>
       <%= render 'comments/form_podcasts', commentable: @podcast %>
 
       <% if @podcast.comments  %>
