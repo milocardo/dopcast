@@ -12,14 +12,35 @@ class PodcastsController < ApplicationController
         "Accept" => "application/json"
       }
       @podcasts["results"].each do |podcast|
-        Podcast.create(image: podcast["image"],
-          collection_id: podcast["itunes_id"],
-          collection_name:podcast["title_original"],
-          artist_name: podcast["publisher_original"],
-          genre: podcast["genres"],
-          country: podcast["description_highlighted"],
+        Podcast.create(title: podcast["title_original"],
+          itunes_id: podcast["itunes_id"],
+          total_episodes:podcast["total_episodes"],
+          image: podcast["image"],
+          publisher_original: podcast["publisher_original"],
+          korean_id: podcast["id"],
           )
       end
+
+      @episodes = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?type=episode&q=#{params[:query]}",
+      headers:{
+        "X-Mashape-Key" => "xpFi4BobqYmshRgxPvEXythBH7XAp1et0DjjsntjmRrxXROJri",
+        "Accept" => "application/json"
+      }
+      @episodes["results"].each do |episode|
+        Episode.create!(audio: episode["audio"],
+          korean_podcast_id: episode["podcast_id"],
+          itunes_id:episode["itunes_id"],
+          audio_length:episode["audio_length"],
+          description_original:episode["description_original"],
+          image: episode["image"],
+          genres: episode["genres"],
+          publisher_original: episode["publisher_original"],
+          title_original: episode["title_original"],
+          pub_date_ms: episode["pub_date_ms"],
+          podcast_title_original: episode["podcast_title_original"]
+          )
+      end
+
       PgSearch::Multisearch.rebuild(Podcast)
       PgSearch::Multisearch.rebuild(Episode)
       @results = PgSearch.multisearch(params[:query])

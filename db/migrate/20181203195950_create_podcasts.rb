@@ -1,12 +1,12 @@
 class CreatePodcasts < ActiveRecord::Migration[5.2]
   def change
     create_table :podcasts do |t|
+      t.string :title
+      t.string :itunes_id
+      t.string :total_episodes
       t.string :image
-      t.string :collection_id
-      t.string :collection_name
-      t.string :artist_name
-      t.string :genre
-      t.string :country
+      t.string :publisher_original
+      t.string :korean_id
 
       t.timestamps
     end
