@@ -2,7 +2,7 @@
   <span class="glyphicon glyphicon-plus"></span>
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
   <% if a.trackable %>
-    <%= link_to a.trackable.follower, podcast_path(a.trackable) %> is being followed.
+  <p><%= link_to a.trackable.follower.username, user_path(a.trackable.follower_id) %> started following <%= link_to a.trackable.followable.collection_name, podcast_path(a.trackable.followable) %></p>
   <% else %>
     A following that is currently deleted was added.
   <% end %>
