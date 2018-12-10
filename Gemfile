@@ -22,7 +22,7 @@ gem 'acts_as_commentable'
 gem 'acts_as_votable', '~> 0.12.0'
 gem 'public_activity'
 gem 'will_paginate', '~> 3.1.0'
-gem 'httpartygit '
+gem 'httparty'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 group :development do
