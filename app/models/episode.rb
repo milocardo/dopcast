@@ -5,6 +5,9 @@ class Episode < ApplicationRecord
   include PgSearch
   multisearchable against: [ :title, :description, :guest ]
 
+  include PublicActivity::Model
+  tracked
+
   acts_as_votable
   acts_as_commentable
 end

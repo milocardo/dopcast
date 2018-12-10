@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'activities/index'
   devise_for :users
   root to: 'pages#home'
 
@@ -42,4 +43,8 @@ Rails.application.routes.draw do
 
 
   resources :comments, only: [:create, :destroy]
+  resources :activities
+  get "/feed" => "activities#feed", as: :feed
+  get "/feed/fetch" => "activities#show", as: :fetch_activity
+  get "/yours" => "activities#yours", as: :your_actions
 end
