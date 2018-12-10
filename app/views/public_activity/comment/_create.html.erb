@@ -1,0 +1,9 @@
+<li class="list-group-item">
+  <span class="glyphicon glyphicon-plus"></span>
+  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
+  <% if a.trackable %>
+    <%= link_to a.trackable.comment, comment_path(a.trackable) %> was added.
+  <% else %>
+    A comment that is currently deleted was added.
+  <% end %>
+</li>
