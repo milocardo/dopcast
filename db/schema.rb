@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_140404) do
+ActiveRecord::Schema.define(version: 2018_12_06_172030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,12 +50,19 @@ ActiveRecord::Schema.define(version: 2018_12_10_140404) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.string "title"
+    t.string "audio"
     t.bigint "podcast_id"
-    t.integer "duration"
-    t.text "description"
+    t.string "korean_podcast_id"
+    t.string "itunes_id"
+    t.string "audio_length"
     t.string "guest"
-    t.date "date"
+    t.text "description_original"
+    t.string "genres"
+    t.string "image"
+    t.string "publisher_original"
+    t.string "title_original"
+    t.string "pub_date_ms"
+    t.string "podcast_title_original"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
@@ -95,12 +102,20 @@ ActiveRecord::Schema.define(version: 2018_12_10_140404) do
   end
 
   create_table "podcasts", force: :cascade do |t|
+    t.string "itunes_id"
     t.string "image"
-    t.string "collection_id"
-    t.string "collection_name"
-    t.string "artist_name"
-    t.string "genre"
+    t.string "title"
+    t.string "total_episodes"
+    t.string "episodes"
     t.string "country"
+    t.string "description"
+    t.string "language"
+    t.string "korean_id"
+    t.string "lastest_pub_date_ms"
+    t.string "earliest_pub_date_ms"
+    t.string "publisher"
+    t.string "genres"
+    t.string "extra"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
