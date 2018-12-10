@@ -137,7 +137,7 @@ class PodcastsController < ApplicationController
     @follow = Follow.find_by(follower: @current_user, followable: @podcast)
     respond_to :js
     respond_to do |format|
-      format.js {render inline: "location.reload();" }
+    format.js {render inline: "location.reload();" }
     end
   end
 
@@ -146,7 +146,7 @@ class PodcastsController < ApplicationController
     current_user.stop_following(@podcast)
     respond_to :js
     respond_to do |format|
-      format.js {render inline: "location.reload();" }
+    format.js {render inline: "location.reload();" }
     end
   end
 

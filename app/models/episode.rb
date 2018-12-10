@@ -16,6 +16,11 @@ class Episode < ApplicationRecord
                              :podcast_title_original
                            ]
   validates :korean_podcast_id, uniqueness: true
+  multisearchable against: [ :title, :description, :guest ]
+
+  include PublicActivity::Model
+  tracked
+
   acts_as_votable
   acts_as_commentable
 end

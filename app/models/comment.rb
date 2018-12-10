@@ -6,6 +6,9 @@ class Comment < ActiveRecord::Base
 
   default_scope -> { order('created_at ASC') }
 
+  include PublicActivity::Model
+  tracked only: [:create], owner: proc { |_controller, model| model.user }
+
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   #acts_as_voteable
