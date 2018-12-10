@@ -12,12 +12,18 @@ class UsersController < ApplicationController
     current_user.follow(@user)
     @follow = Follow.find_by(follower: current_user, followable: @user)
     respond_to :js
+    respond_to do |format|
+    format.js {render inline: "location.reload();" }
+    end
   end
 
   def unfollow
     @user = User.find(params[:id])
     current_user.stop_following(@user)
     respond_to :js
+    respond_to do |format|
+     format.js {render inline: "location.reload();" }
+    end
   end
 
   # def following?
