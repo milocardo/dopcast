@@ -1,9 +1,8 @@
-
 <div id="mentionable-data" data-content="<%= mentionable_user_path(current_user) %>"></div>
 <%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), id: 'new_comment', method: :post do %>
  <div class="form-group">
 <!--    <div id="comment-text" contenteditable="true" class="editable form-control input-mentionable" placeholder="Enter Comment"></div> -->
-   <%= text_field_tag :comment_text, nil, placeholder: 'Enter Comment', class: 'form-control-comment input-mentionable' %>
+   <%= text_area_tag :comment_text, nil, size: '50x3', placeholder: 'Enter Comment', class: 'form-control-comment input-mentionable' %>
    <%= hidden_field_tag 'episode_id', @episode.id %>
  </div>
  <%= submit_tag :comment, class: 'btn btn-primary' %>
