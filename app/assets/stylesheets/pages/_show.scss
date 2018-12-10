@@ -1,12 +1,11 @@
 .podcard-show {
-  padding-top: 40px;
-  padding-right: 170px;
+  padding-top: 15px;
   padding-bottom: 40px;
+  display: inline-block;
 }
 
 .podcard-show-epi {
   padding-top: 40px;
-  padding-right: 170px;
   padding-bottom: 40px;
 }
 
@@ -27,4 +26,33 @@
 
 .pod-descript {
 	padding-top: 50px;
+}
+
+.container-show {
+  margin-top: 65px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  h1 {
+  font-weight: bold;
+  font-size: 35px;
+  margin-top: 55px !important;
+  }
+
+  h2 {
+  font-size: 35px;
+  }
+
+  h3 {
+  font-size: 30px;
+  }
+}
+
+.reviews {
+  margin-left: 100px;
+  margin-right: 200px;
+
+    p {
+  font-size: 20px;
+  }
 }
