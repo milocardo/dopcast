@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :podcasts, through: :subscriptions
   has_many :reviews
   acts_as_voter
+  acts_as_followable
+  acts_as_follower
 end

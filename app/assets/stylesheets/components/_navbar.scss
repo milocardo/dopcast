@@ -9,8 +9,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: $purple;
-  border-bottom: 5px;
-  border-color: $orange;
 }
 
 /* Logo */
@@ -43,11 +41,18 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: $white;
+  padding: 10px 8px 6px 16px;
+  text-decoration: none;
   font-size: 14px;
+  color: $white;
+  display: block;
+  position: relative;
+  padding-left: 25px;
 }
+
+
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $orange;
   text-decoration: none;
 }
 
@@ -105,13 +110,13 @@
 }
 
 #home .navbar-form {
-    display: none;
+  display: none;
 }
 
 .input-group-btn {
-    position: relative;
-    font-size: 18px;
-    white-space: nowrap;
+  position: relative;
+  font-size: 18px;
+  white-space: nowrap;
 }
 
 .btn-default {

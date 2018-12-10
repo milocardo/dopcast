@@ -76,6 +76,24 @@ class PodcastsController < ApplicationController
     end
   end
 
+  def follow
+    @podcast = Podcast.find(params[:id])
+    @current_user.follow(@podcast)
+    @follow = Follow.find_by(follower: @current_user, followable: @podcast)
+    respond_to :js
+  end
+
+  def unfollow
+    @podcast = Podcast.find(params[:id])
+    @current_user.stop_following(@podcast)
+    respond_to :js
+  end
+
+  def following?
+    @podcast = Podcast.find(params[:id])
+    @current_user.following?(@podcast)
+  end
+
   def new
     @podcast = Podcast.new
   end
