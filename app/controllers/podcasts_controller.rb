@@ -6,17 +6,18 @@ class PodcastsController < ApplicationController
     @podcasts = Podcast.all
     if params[:query].present?
 
-      url = "https://itunes.apple.com/search?term=#{params[:query]}&entity=podcast&limit=100"
-      podcasts_serialized = open(url).read
-      @podcasts = JSON.parse(podcasts_serialized)
-
+      @podcasts = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?type=podcast&q=#{params[:query]}",
+      headers:{
+        "X-Mashape-Key" => "xpFi4BobqYmshRgxPvEXythBH7XAp1et0DjjsntjmRrxXROJri",
+        "Accept" => "application/json"
+      }
       @podcasts["results"].each do |podcast|
-        Podcast.create(image: podcast["artworkUrl600"],
-          collection_id: podcast["collectionId"],
-          collection_name:podcast["collectionName"],
-          artist_name: podcast["artistName"],
-          genre: podcast["primaryGenreName"],
-          country: podcast["country"],
+        Podcast.create(image: podcast["image"],
+          collection_id: podcast["itunes_id"],
+          collection_name:podcast["title_original"],
+          artist_name: podcast["publisher_original"],
+          genre: podcast["genres"],
+          country: podcast["description_highlighted"],
           )
       end
       PgSearch::Multisearch.rebuild(Podcast)
