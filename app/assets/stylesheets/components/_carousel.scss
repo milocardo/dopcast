@@ -16,6 +16,10 @@ $moveRight: $tileWidth * ($growFactor - 1);
   width: 100%;
 }
 
+.container-carousel {
+  margin-top: 60px;
+}
+
 .scroll-row {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -27,7 +31,12 @@ $moveRight: $tileWidth * ($growFactor - 1);
   font-size: 0;
   white-space: nowrap;
   margin: ($tileHeight / 2) 0;
+  margin: 0px;
   padding-bottom: 10px; // Account for OS X scroll bar
+}
+
+#episode-car {
+  padding-top: 30px;
 }
 
 .tile {

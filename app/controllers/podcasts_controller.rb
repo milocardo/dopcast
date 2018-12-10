@@ -6,17 +6,18 @@ class PodcastsController < ApplicationController
     @podcasts = Podcast.all
     if params[:query].present?
 
-      url = "https://itunes.apple.com/search?term=#{params[:query]}&entity=podcast&limit=100"
-      podcasts_serialized = open(url).read
-      @podcasts = JSON.parse(podcasts_serialized)
-
+      @podcasts = HTTParty.get "https://listennotes.p.mashape.com/api/v1/search?type=podcast&q=#{params[:query]}",
+      headers:{
+        "X-Mashape-Key" => "xpFi4BobqYmshRgxPvEXythBH7XAp1et0DjjsntjmRrxXROJri",
+        "Accept" => "application/json"
+      }
       @podcasts["results"].each do |podcast|
-        Podcast.create(image: podcast["artworkUrl600"],
-          collection_id: podcast["collectionId"],
-          collection_name:podcast["collectionName"],
-          artist_name: podcast["artistName"],
-          genre: podcast["primaryGenreName"],
-          country: podcast["country"],
+        Podcast.create(image: podcast["image"],
+          collection_id: podcast["itunes_id"],
+          collection_name:podcast["title_original"],
+          artist_name: podcast["publisher_original"],
+          genre: podcast["genres"],
+          country: podcast["description_highlighted"],
           )
       end
       PgSearch::Multisearch.rebuild(Podcast)
@@ -74,6 +75,30 @@ class PodcastsController < ApplicationController
     else
       redirect_to podcast_path(@podcast)
     end
+  end
+
+  def follow
+    @podcast = Podcast.find(params[:id])
+    current_user.follow(@podcast)
+    @follow = Follow.find_by(follower: @current_user, followable: @podcast)
+    respond_to :js
+    respond_to do |format|
+    format.js {render inline: "location.reload();" }
+    end
+  end
+
+  def unfollow
+    @podcast = Podcast.find(params[:id])
+    current_user.stop_following(@podcast)
+    respond_to :js
+    respond_to do |format|
+    format.js {render inline: "location.reload();" }
+    end
+  end
+
+  def following?
+    @podcast = Podcast.find(params[:id])
+    @current_user.following?(@podcast)
   end
 
   def new

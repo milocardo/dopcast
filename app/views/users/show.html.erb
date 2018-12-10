@@ -1,0 +1,30 @@
+<h2>Photo</h2>
+
+<%= @user.username %>
+
+<div class="follow-button-area" id="user- <%= @user.id %>" style="float: right">
+  <% if current_user.following?(@user) %>
+  <%= button_to "Following", {action: 'unfollow', id: @user.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+  <% elsif current_user != @user %>
+  <%= button_to "Follow", {action: 'follow', id: @user.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+  <% end %>
+</div>
+
+<h2>Followers</h2>
+  <% @user.followers.each do |follower| %>
+  <p>Avatar</p>
+  <%= follower.email %>
+  <% end %>
+
+
+<h2>Following</h2>
+<% @user.all_following.each do |following| %>
+  <p>Avatar</p>
+  <%= following.email %>
+  <% end %>
+
+
+
+<h2>Subscriptions</h2>
+
+

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,7 +51,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     acts_as_commentable (4.0.2)
-    acts_as_follower (0.2.1)
     acts_as_votable (0.12.0)
     arel (9.0.0)
     autoprefixer-rails (9.4.0)
@@ -96,6 +103,9 @@ GEM
     hashie (3.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.16.3)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.8.0)
@@ -121,6 +131,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.3.1)
@@ -251,7 +262,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable
-  acts_as_follower
+  acts_as_follower!
   acts_as_votable (~> 0.12.0)
   autoprefixer-rails
   bootsnap
@@ -260,6 +271,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
+  httparty
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.21)
