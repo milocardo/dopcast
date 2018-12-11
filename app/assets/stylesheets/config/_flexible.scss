@@ -1,14 +1,20 @@
-@media (max-width: 600px) {
+// Mobile phone
+
+@media (max-width: 768px) { 
   .banner h1 {
     font-size: 20px;
   }
 }
 
-@media (min-width: 601px) {
+// Medium + Large screen
+
+@media (min-width: 769px) {
   .banner h1 {
   font-size: 30px;
   }
 }
+
+// Extra large screen
 
 @media (min-width: 1200px) {
   .banner h1 {
