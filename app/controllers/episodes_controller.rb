@@ -18,21 +18,53 @@ class EpisodesController < ApplicationController
   def upvote
     @episode = Episode.find(params[:id])
     @episode.upvote_from current_user
-    if request.env['PATH_INFO'] == "/"
-      redirect_to episode_path(@episode)
-    else
-      redirect_to root_path
+    respond_to :js
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
     end
+    # if request.env['PATH_INFO'] == "/"
+    #   redirect_to episode_path(@episode)
+    # else
+    #   redirect_to root_path
+    # end
   end
 
   def downvote
     @episode = Episode.find(params[:id])
     @episode.downvote_from current_user
-    if request.env['PATH_INFO'] == "/"
-      redirect_to episode_path(@episode)
-    else
-      redirect_to root_path
+    respond_to :js
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
     end
+    # if request.env['PATH_INFO'] == "/"
+    #   redirect_to episode_path(@episode)
+    # else
+    #   redirect_to root_path
+    # end
+  end
+
+  def follow
+    @episode = Episode.find(params[:id])
+    current_user.follow(@episode)
+    @follow = Follow.find_by(follower: @current_user, followable: @episode)
+    respond_to :js
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
+  end
+
+  def unfollow
+    @episode = Episode.find(params[:id])
+    current_user.stop_following(@episode)
+    respond_to :js
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
+  end
+
+  def following?
+    @episode = Episode.find(params[:id])
+    @current_user.following?(@episode)
   end
 
   def new

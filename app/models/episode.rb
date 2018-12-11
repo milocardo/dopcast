@@ -1,22 +1,18 @@
 class Episode < ApplicationRecord
-  belongs_to :podcast
+  belongs_to :podcast, optional: true
   has_many :reviews
 
   include PgSearch
-  multisearchable against: [ :audio,
-                             :korean_podcast_id,
-                             :itunes_id,
-                             :audio_length,
-                             :description_original,
-                             :genres,
-                             :image,
-                             :publisher_original,
-                             :title_original,
+  multisearchable against: [ :audio_length,
+                             :title,
+                             :audio,
+                             :description,
                              :pub_date_ms,
-                             :podcast_title_original
+                             :image,
+                             :korean_episode_id,
+                             :podcast,
                            ]
-  validates :korean_podcast_id, uniqueness: true
-  multisearchable against: [ :title, :description, :guest ]
+  validates :korean_episode_id, uniqueness: true
 
   include PublicActivity::Model
   tracked
