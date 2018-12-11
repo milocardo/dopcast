@@ -1,3 +1,7 @@
+body {
+-webkit-font-smoothing: antialiased;
+}
+
 .banner {
   color: white;
   text-align: center;
@@ -5,6 +9,7 @@
   width: 100vw;
   // width: auto;
   // height: auto;
+
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   background-repeat: no-repeat;
@@ -22,9 +27,9 @@
 
 .banner h1 {
   font-weight: bold;
-  text-shadow: 2px 2px black;
+  // text-shadow: 2px 2px black;
   position: relative;
-  font-family: "Century Gothic" !important;
+  font-family: Roboto !important;
 }
 
 // .banner p {
@@ -34,3 +39,4 @@
 //   opacity: 0.6;
 //   margin-bottom: 30px;
 // }
+
