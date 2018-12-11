@@ -1,5 +1,5 @@
 <%= render "shared/sidebar" %>
-<div class="container-text"> 
+<div class="container-text">
   <div class="container-show">
     <h1><%= @episode.title %></h1>
     <div class="podcard-show">
@@ -13,13 +13,13 @@
           <h2>Author: <%= @episode.podcast.artist_name %></h2>
           <h3>Language: <%= @episode.podcast.language %></h3>
           <h3>Language: <%= @episode.podcast.country %></h3>
-          <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+          <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
           <button type="button" class="btn btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
             <span class="badge"><%= @podcast.get_upvotes.size %></span>
           </button>
           <% end %>
-          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
           <button type="button" class="btn btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
             <span class="badge"><%= @podcast.get_downvotes.size %></span>
@@ -33,8 +33,8 @@
             <p><%= @episode.description %></p>
           </div>
         </div>
-      </div>  
-    </div>  
+      </div>
+    </div>
     <div class="reviews">
       <h3>Did you like <%= @episode.title %> ? Leave a comment below!</h3>
       <%= render 'comments/form_episodes', commentable: @episode %>
@@ -45,6 +45,6 @@
       <br>
       <% end %>
       <% end %>
-    </div>  
+    </div>
   </div>
 </div>

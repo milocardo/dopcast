@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   resources :podcasts do
     resources :episodes, shallow: true
     member do
-      put "like" => "podcasts#upvote"
-      put "unlike" => "podcasts#downvote"
+      post "like" => "podcasts#upvote"
+      post "unlike" => "podcasts#downvote"
     end
     member do
       post "follow" => "podcasts#follow"
@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   resources :episodes, only: [] do
     resources :reviews, shallow: true
     member do
-      put "like" => "episodes#upvote"
-      put "unlike" => "episodes#downvote"
+      post "like" => "episodes#upvote"
+      post "unlike" => "episodes#downvote"
     end
   end
 
