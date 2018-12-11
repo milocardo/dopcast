@@ -9,6 +9,9 @@
   align-items: center;
   justify-content: space-between;
   background-color: $purple;
+  border-bottom: 5px;
+  border-color: $orange;
+  position: static !important;
 }
 
 /* Logo */
@@ -62,6 +65,7 @@
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
+
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
@@ -70,6 +74,7 @@
   line-height: 22px !important;
   padding: 10px 20px;
 }
+
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
