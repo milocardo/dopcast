@@ -1,6 +1,9 @@
-<h2>Photo</h2>
+<h3><%= @user.username %></h3>
 
-<%= @user.username %>
+
+<%= link_to "Add or change your photo", edit_user_path(@user) %>
+
+<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
 
 <div class="follow-button-area" id="user- <%= @user.id %>" style="float: right">
   <% if current_user.following?(@user) %>
