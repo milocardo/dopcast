@@ -1,0 +1,17 @@
+@media (max-width: 600px) {
+  .banner h1 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 601px) {
+  .banner h1 {
+  font-size: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .banner h1 {
+  font-size: 40px;
+  }
+}

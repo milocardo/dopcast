@@ -26,27 +26,27 @@
             <span class="badge"><%= @podcast.get_downvotes.size %></span>
           </button>
           <% end %>
+          <div class="follow-button-area" id="user- <%= @podcast.id %>" style="float: right">
+            <% if current_user.following?(@podcast) %>
+            <%= button_to "Following", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+            <% elsif current_user != @podcast %>
+            <%= button_to "Follow", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+            <% end %>
+          </div>
         </div>
       </div>
-
-      <div class="follow-button-area" id="user- <%= @podcast.id %>" style="float: right">
-        <% if current_user.following?(@podcast) %>
-        <%= button_to "Following", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-        <% elsif current_user != @podcast %>
-        <%= button_to "Follow", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
-        <% end %>
-      </div>
-  </div>
-  <div class="reviews">
-    <h3>Do you like <%= @podcast.collection_name %> ? Leave a comment below!</h3>
-    <%= render 'comments/form_podcasts', commentable: @podcast %>
-    <% if @podcast.comments  %>
-    <% @podcast.comments.each do |comment| %>
-    <p><strong><%= comment.user.email %> :</strong></p>
-    <p><%= comment.comment %></p>
-    <br>
-    <% end %>
-    <% end %>
+    </div>
+    <div class="reviews">
+      <h3>Do you like <%= @podcast.collection_name %> ? Leave a comment below!</h3>
+      <%= render 'comments/form_podcasts', commentable: @podcast %>
+      <% if @podcast.comments  %>
+        <% @podcast.comments.each do |comment| %>
+        <p><strong><%= comment.user.email %> :</strong></p>
+        <p><%= comment.comment %></p>
+        <br>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
