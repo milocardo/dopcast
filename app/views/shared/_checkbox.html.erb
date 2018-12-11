@@ -1,44 +1,57 @@
 
-<div class="checkbox-container">
+<div class="filter-text"> <strong>Advanced Filters</strong></div>
+
+<div><svg class="arrows">
+              <path class="a1" d="M0 0 L30 32 L60 0"></path>
+              <path class="a2" d="M0 20 L30 52 L60 20"></path>
+              <path class="a3" d="M0 40 L30 72 L60 40"></path>
+</svg>
+</div>
+
+<div class="checkbox-container hideme">
   <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
-    <ul class="checkbox">
+    <div class="filter-checkbox">
 
-      <div class="checkbox-column">
-        <p>Categories</p>
-          <li><input type="checkbox" id="checkboxOne" value="Categories"><!-- <label for="checkboxOne"> -->
+      <ul class="filter-checkbox">
+        <li><p class="category-checkbox1">Categories</p>
+<!--         <div class="checkbox-column-category">
+ -->          <input type="checkbox" id="checkboxOne" value="Categories"><!-- <label for="checkboxOne"> -->
             <%= form.collection_check_boxes 'categories', Search.categories, :first, :last %>
+            </li>
+        <li><p class="category-checkbox2"></p>
+            <%= form.collection_check_boxes 'categories2', Search.categories2, :first, :last %>
           <!-- </label> --></li>
-      </div>
+      </ul>
 
-      <div class="checkbox-column">
-        <p>Types</p>
-          <li><input type="checkbox" id="checkboxOne" value="Types"><!-- <label for="checkboxOne"> -->
+      <ul class="filter-checkbox">
+        <li><p>Types</p>
+          <input type="checkbox" id="checkboxOne" value="Types">
           <%= form.collection_check_boxes 'types', Search.types, :first, :last %>
-          <!-- </label> --></li>
-      </div>
+         </li>
+      </ul>
 
-      <div class="checkbox-column">
-        <p>Duration</p>
-          <li><input type="checkbox" id="checkboxOne" value="Duration"><!-- <label for="checkboxOne"> -->
+      <ul class="filter-checkbox">
+        <li><p>Duration</p>
+          <input type="checkbox" id="checkboxOne" value="Duration"><!-- <label for="checkboxOne"> -->
           <%= form.collection_check_boxes 'duration', Search.durations, :first, :last %>
           <!-- </label> --></li>
-      </div>
+      </ul>
 
-      <div class="checkbox-column">
-        <p>Languages</p>
-          <li><input type="checkbox" id="checkboxOne" value="Languages"><!-- <label for="checkboxOne"> -->
+      <ul class="filter-checkbox">
+        <li><p>Languages</p>
+          <input type="checkbox" id="checkboxOne" value="Languages"><!-- <label for="checkboxOne"> -->
           <%= form.collection_check_boxes 'language', Search.languages, :first, :last %>
           <!-- </label> --></li>
-      </div>
+      </ul>
 
-      <div class="checkbox-column">
-        <p>Sort by</p>
-          <li><input type="checkbox" id="checkboxOne" value="Sortby"><!-- <label for="checkboxOne"> -->
+      <ul class="filter-checkbox">
+        <li><p>Sort by</p>
+          <input type="checkbox" id="checkboxOne" value="Sortby"><!-- <label for="checkboxOne"> -->
           <%= form.collection_check_boxes 'sortby', Search.sortby, :first, :last %>
           <!-- </label> --></li>
-      </div>
+      </ul>
 
-    </ul>
-  <%= form.submit %>
-  <% end %>
+    </div>
+<!--   <%= form.submit %>
+ -->  <% end %>
 </div>

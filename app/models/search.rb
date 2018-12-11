@@ -1,5 +1,6 @@
 class Search
-  CATEGORIES = %w[business comedy education sports technology science politics society arts design society music other]
+  CATEGORIES = %w[business comedy arts sports music science other]
+  CATEGORIES2 = %w[politics society education design society technology]
   TYPES = %w[podcast episode playlist]
   DURATIONS = ['0 - 15 min', '15 - 30 min', '30 - 45 min', '45 - 60 min', 'over 1 hour']
   LANGUAGES = %w[English Spanish French Portuguese Other]
@@ -7,6 +8,10 @@ class Search
 
   def self.categories
     make_collection(CATEGORIES)
+  end
+
+  def self.categories2
+    make_collection(CATEGORIES2)
   end
 
   def self.types
