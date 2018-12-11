@@ -15,7 +15,7 @@ class PodcastsController < ApplicationController
       )
 
       @podcasts["results"].each do |podcast_info|
-
+        #See if the podcast is on to the database
         podcast = Podcast.find_or_initialize_by(itunes_id: podcast_info['itunes_id'])
         next if podcast.persisted?
         #Search for all the information off the specific podcast

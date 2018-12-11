@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_113719) do
     t.string "image"
     t.string "title"
     t.string "total_episodes"
-    t.string "episodes_list"
+    t.json "episodes_list"
     t.string "country"
     t.string "description"
     t.string "language"
