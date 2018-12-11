@@ -13,14 +13,11 @@
     <div class="filter-checkbox">
 
       <ul class="filter-checkbox">
-        <li><p class="category-checkbox1">Categories</p>
+        <li><p class="category-checkbox">Categories</p>
 <!--         <div class="checkbox-column-category">
  -->          <input type="checkbox" id="checkboxOne" value="Categories"><!-- <label for="checkboxOne"> -->
             <%= form.collection_check_boxes 'categories', Search.categories, :first, :last %>
             </li>
-        <li><p class="category-checkbox2"></p>
-            <%= form.collection_check_boxes 'categories2', Search.categories2, :first, :last %>
-          <!-- </label> --></li>
       </ul>
 
       <ul class="filter-checkbox">
