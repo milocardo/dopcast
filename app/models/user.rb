@@ -10,6 +10,8 @@ class User < ApplicationRecord
   include PublicActivity::Model
   tracked
 
+  mount_uploader :photo, PhotoUploader
+
   acts_as_voter
   acts_as_followable
   acts_as_follower
