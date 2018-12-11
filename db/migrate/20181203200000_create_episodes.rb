@@ -1,12 +1,15 @@
 class CreateEpisodes < ActiveRecord::Migration[5.2]
   def change
     create_table :episodes do |t|
-      t.string :title
       t.references :podcast, foreign_key: true
-      t.integer :duration
+      t.string :audio_length
+      t.string :title
+      t.string :audio
       t.text :description
-      t.string :guest
-      t.date :date
+      t.string :pub_date_ms
+      t.string :image
+      t.string :korean_episode_id
+      t.string :podcast
 
       t.timestamps
     end

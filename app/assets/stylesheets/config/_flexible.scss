@@ -1,0 +1,23 @@
+// Mobile phone
+
+@media (max-width: 768px) { 
+  .banner h1 {
+    font-size: 20px;
+  }
+}
+
+// Small Laptop
+
+@media (min-width: 769px) {
+  .banner h1 {
+  font-size: 30px;
+  }
+}
+
+// Laptop + desktop
+
+@media (min-width: 1200px) {
+  .banner h1 {
+  font-size: 40px;
+  }
+}

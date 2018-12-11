@@ -1,0 +1,15 @@
+<div class="carousel">
+  <div class="contain">
+    <div class="scroll-row">
+      <div class="row__inner">
+        <% @episode_results.each do |episode| %>
+          <div class="tile">
+            <div class="tile__media">
+              <div><%=link_to( image_tag(episode.searchable.image), podcast_path(episode.searchable.id), :class=>"img-size") %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

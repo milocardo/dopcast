@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_172030) do
+ActiveRecord::Schema.define(version: 2018_12_11_113719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "trackable_type"
+    t.bigint "trackable_id"
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.string "key"
+    t.text "parameters"
+    t.string "recipient_type"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+    t.index ["owner_type", "owner_id"], name: "index_activities_on_owner_type_and_owner_id"
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+    t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient_type_and_recipient_id"
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+    t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
+  end
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
@@ -31,12 +50,15 @@ ActiveRecord::Schema.define(version: 2018_12_06_172030) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.string "title"
     t.bigint "podcast_id"
-    t.integer "duration"
+    t.string "audio_length"
+    t.string "title"
+    t.string "audio"
     t.text "description"
-    t.string "guest"
-    t.date "date"
+    t.string "pub_date_ms"
+    t.string "image"
+    t.string "korean_episode_id"
+    t.string "podcast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
@@ -76,12 +98,20 @@ ActiveRecord::Schema.define(version: 2018_12_06_172030) do
   end
 
   create_table "podcasts", force: :cascade do |t|
+    t.string "itunes_id"
     t.string "image"
-    t.string "collection_id"
-    t.string "collection_name"
-    t.string "artist_name"
-    t.string "genre"
+    t.string "title"
+    t.string "total_episodes"
+    t.string "episodes_list"
     t.string "country"
+    t.string "description"
+    t.string "language"
+    t.string "korean_id"
+    t.string "lastest_pub_date_ms"
+    t.string "earliest_pub_date_ms"
+    t.string "publisher"
+    t.string "genres"
+    t.string "extra"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,6 +146,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_172030) do
     t.string "country"
     t.string "playlist"
     t.string "subscription"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
