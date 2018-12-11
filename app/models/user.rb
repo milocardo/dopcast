@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :reviews
 
   include PublicActivity::Model
-  tracked
+  include PublicActivity::Activist
+  tracked #owner: proc { |controller, model| controller.current_user ? controller.current_user : nil }
 
   mount_uploader :photo, PhotoUploader
 

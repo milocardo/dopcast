@@ -1,7 +1,7 @@
 <%= render "shared/sidebar" %>
 <div class="container-text">
   <div class="container-show">
-    <h1><%= @podcast.collection_name %></h1>
+    <h1><%= @podcast.title %></h1>
     <div class="podcard-show">
       <div class="row">
         <div class="col-xs-3">
@@ -11,16 +11,16 @@
         </div>
         <div class="col-xs-8">
           <div class="pod-status"></div>
-          <h2>Author: <%= @podcast.artist_name %></h2>
-          <h3>Language: <%= @podcast.country %> (change to language)</h3>
+          <h3>Author: <%= @podcast.publisher %></h3>
+          <h3>Language: <%= @podcast.language %></h3>
           <h3>Country: <%= @podcast.country %></h3>
-          <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+          <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
           <button type="button" class="btn btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
             <span class="badge"><%= @podcast.get_upvotes.size %></span>
           </button>
           <% end %>
-          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
           <button type="button" class="btn btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
             <span class="badge"><%= @podcast.get_downvotes.size %></span>
@@ -54,16 +54,18 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
     <div class="reviews">
-      <h3>Do you like <%= @podcast.collection_name %> ? Leave a comment below!</h3>
+      <h3>Leave a comment below!</h3>
       <%= render 'comments/form_podcasts', commentable: @podcast %>
       <% if @podcast.comments  %>
         <% @podcast.comments.each do |comment| %>
         <p><strong><%= comment.user.email %> :</strong></p>
         <p><%= comment.comment %></p>
         <br>
+        <% end %>
       <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+      </div>
+

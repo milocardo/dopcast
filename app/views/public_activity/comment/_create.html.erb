@@ -2,9 +2,10 @@
   <span class="glyphicon glyphicon-plus"></span>
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
   <% if a.trackable %>
-    <p><%= link_to a.trackable.user.username, user_path(a.trackable.user) %> commented on <%= link_to a.trackable.commentable.collection_name, podcast_path(a.trackable.commentable) %></p>
+    <p><%= link_to a.trackable.user.username, user_path(a.trackable.user) %> commented on <%= link_to a.trackable.commentable.title, podcast_path(a.trackable.commentable) %></p>
     <%= a.trackable.comment %>
   <% else %>
     A comment that is currently deleted was added.
   <% end %>
 </li>
+

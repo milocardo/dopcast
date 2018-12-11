@@ -1,7 +1,9 @@
 <%= render "shared/sidebar" %>
-<div class="container-text"> 
+<div class="container-text">
   <div class="container-show">
-    <h1><%= @episode.title %></h1>
+    <h1><%= @episode.podcast.title %> Podcast</h1>
+    <h2>Episode <%= @episode.title %></h2>
+
     <div class="podcard-show">
       <div class="row">
         <div class="col-xs-3">
@@ -10,28 +12,23 @@
           </div>
         </div>
         <div class="col-xs-8">
-          <h2>Author: <%= @episode.podcast.artist_name %></h2>
+          <h3>Author: <%= @episode.podcast.publisher %></h3>
           <h3>Language: <%= @episode.podcast.language %></h3>
-          <h3>Language: <%= @episode.podcast.country %></h3>
-          <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+          <h3>Country: <%= @episode.podcast.country %></h3>
+          <h3>Length: <%= @episode.audio_length.to_i / 60 %> min</h3>
+          <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
           <button type="button" class="btn btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
             <span class="badge"><%= @podcast.get_upvotes.size %></span>
           </button>
           <% end %>
-          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
           <button type="button" class="btn btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
             <span class="badge"><%= @podcast.get_downvotes.size %></span>
           </button>
           <% end %>
-          <div class="follow-button-area" id="user- <%= @podcast.id %>" style="float: right">
-          <% if current_user.following?(@podcast) %>
-          <%= button_to "Following", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-          <% elsif current_user != @podcast %>
-          <%= button_to "Follow", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
-        <% end %>
-      </div>
+
         </div>
       </div>
       <div class="pod-descript">
@@ -40,10 +37,10 @@
             <p><%= @episode.description %></p>
           </div>
         </div>
-      </div>  
-    </div>  
+      </div>
+    </div>
     <div class="reviews">
-      <h3>Did you like <%= @episode.title %> ? Leave a comment below!</h3>
+      <h4>Leave a comment!</h4>
       <%= render 'comments/form_episodes', commentable: @episode %>
       <% if @episode.comments  %>
         <% @episode.comments.each do |comment| %>
@@ -52,6 +49,6 @@
         <br>
         <% end %>
       <% end %>
-    </div>  
+    </div>
   </div>
 </div>

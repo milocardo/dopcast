@@ -1,6 +1,5 @@
 <h3><%= @user.username %></h3>
 
-
 <%= link_to "Add or change your photo", edit_user_path(@user) %>
 
 <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
@@ -14,20 +13,26 @@
 </div>
 
 <h2>Followers</h2>
-  <% @user.followers.each do |follower| %>
-  <p>Avatar</p>
-  <%= follower.email %>
-  <% end %>
+
+<% @user.followers.each do |follower| %>
+  <%= link_to follower.username, user_path(follower.id) %>
+<% end %>
 
 
 <h2>Following</h2>
+
 <% @user.all_following.each do |following| %>
-  <p>Avatar</p>
-  <%= following.id %>
+  <% if following.is_a? User %>
+    <%= link_to following.username, user_path(following.id) %>
   <% end %>
+<% end %>
 
 
 
 <h2>Subscriptions</h2>
 
-
+<% @user.all_following.each do |following| %>
+  <% if following.is_a? Podcast %>
+    <%= link_to following.title, podcast_path(following.id) %>
+  <% end %>
+<% end %>

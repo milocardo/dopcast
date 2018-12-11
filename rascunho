@@ -1,0 +1,7 @@
+<div class="follow-button-area" id="user- <%= @podcast.id %>" style="float: right">
+          <% if current_user.following?(@episode) %>
+          <%= button_to "Following", {action: 'unfollow', id: @episode.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+          <% elsif current_user != @episode %>
+          <%= button_to "Follow", {action: 'follow', id: @episode.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+        <% end %>
+      </div>
