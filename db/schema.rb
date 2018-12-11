@@ -50,12 +50,15 @@ ActiveRecord::Schema.define(version: 2018_12_11_113719) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.string "title"
     t.bigint "podcast_id"
-    t.integer "duration"
+    t.string "audio_length"
+    t.string "title"
+    t.string "audio"
     t.text "description"
-    t.string "guest"
-    t.date "date"
+    t.string "pub_date_ms"
+    t.string "image"
+    t.string "korean_episode_id"
+    t.string "podcast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
@@ -95,12 +98,20 @@ ActiveRecord::Schema.define(version: 2018_12_11_113719) do
   end
 
   create_table "podcasts", force: :cascade do |t|
+    t.string "itunes_id"
     t.string "image"
-    t.string "collection_id"
-    t.string "collection_name"
-    t.string "artist_name"
-    t.string "genre"
+    t.string "title"
+    t.string "total_episodes"
+    t.string "episodes_list"
     t.string "country"
+    t.string "description"
+    t.string "language"
+    t.string "korean_id"
+    t.string "lastest_pub_date_ms"
+    t.string "earliest_pub_date_ms"
+    t.string "publisher"
+    t.string "genres"
+    t.string "extra"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,12 +1,12 @@
 class Podcast < ApplicationRecord
-  # has_many :episodes
+  has_many :episodes
 
   include PgSearch
   multisearchable against: [ :total_episodes,
                              :itunes_id,
                              :image,
                              :title,
-                             :episodes,
+                             :episodes_list,
                              :country,
                              :description,
                              :language,
@@ -17,7 +17,7 @@ class Podcast < ApplicationRecord
                              :genres,
                              :extra
                            ]
-  validates :korean_id, uniqueness: true
+  validates :itunes_id, uniqueness: true
 
   include PublicActivity::Model
   tracked

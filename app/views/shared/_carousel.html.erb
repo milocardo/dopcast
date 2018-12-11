@@ -2,7 +2,7 @@
   <div class="contain">
     <div class="scroll-row">
       <div class="row__inner">
-        <% @results.each do |podcast| %>
+        <% @podcast_results.each do |podcast| %>
           <div class="tile">
             <div class="tile__media">
               <div><%=link_to( image_tag(podcast.searchable.image), podcast_path(podcast.searchable.id), :class=>"img-size") %></div>

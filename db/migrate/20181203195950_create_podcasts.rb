@@ -5,7 +5,7 @@ class CreatePodcasts < ActiveRecord::Migration[5.2]
       t.string :image
       t.string :title
       t.string :total_episodes
-      t.string :episodes
+      t.string :episodes_list
       t.string :country
       t.string :description
       t.string :language
