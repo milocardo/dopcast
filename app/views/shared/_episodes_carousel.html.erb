@@ -2,10 +2,10 @@
   <div class="contain">
     <div class="scroll-row">
       <div class="row__inner">
-        <% @podcast_results.each do |podcast| %>
+        <% @episode_results.each do |episode| %>
           <div class="tile">
             <div class="tile__media">
-              <div><%=link_to( image_tag(podcast.searchable.image), podcast_path(podcast.searchable.id), :class=>"img-size") %></div>
+              <div><%=link_to( image_tag(episode.searchable.image), episode_path(episode.searchable.id), :class=>"img-size") %></div>
             </div>
           </div>
         <% end %>

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_commentable, only: :create
+  before_action :load_activities, only: [:index, :show, :new, :edit]
   respond_to :js
 
   def create
@@ -10,17 +11,17 @@ class CommentsController < ApplicationController
     end
     if !params[:comment_text].empty?
       if @commentable_type == "Episode"
-        @comment.save 
+        @comment.save
         redirect_to episode_path(Episode.find(params[:episode_id]))
       else
         @comment.save
         redirect_to podcast_path(Podcast.find(params[:podcast_id]))
       end
-    else 
+    else
       if @commentable_type == "Episode"
         redirect_to episode_path(params[:episode_id])
       else
-        redirect_to podcast_path(params[:podcast_id]) 
+        redirect_to podcast_path(params[:podcast_id])
       end
     end
   end
@@ -36,5 +37,9 @@ class CommentsController < ApplicationController
   def find_commentable
     @commentable_type = params[:commentable_type].classify
     @commentable = @commentable_type.constantize.find(params[:commentable_id])
+  end
+
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(30)
   end
 end

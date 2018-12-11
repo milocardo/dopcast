@@ -6,6 +6,12 @@ class User < ApplicationRecord
   has_many :episodes, through: :playlists
   has_many :podcasts, through: :subscriptions
   has_many :reviews
+
+  include PublicActivity::Model
+  tracked
+
+  mount_uploader :photo, PhotoUploader
+
   acts_as_voter
   acts_as_followable
   acts_as_follower

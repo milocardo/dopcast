@@ -1,33 +1,39 @@
 <%= render "shared/sidebar" %>
 <div class="container-text"> 
-  <div class="container">
-    <div class="podcard-show-epi">
+  <div class="container-show">
+    <h1><%= @episode.title %></h1>
+    <div class="podcard-show">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <div class="podcard">
+        <div class="col-xs-3">
+          <div class="podcard-img">
             <%= image_tag @podcast.image, class: "img-responsive" %>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <h1>Name: <%= @episode.podcast.title %></h1>
-          <h2>Episode: <%= @episode.title %></h2>
+        <div class="col-xs-8">
+          <h2>Author: <%= @episode.podcast.artist_name %></h2>
           <h3>Language: <%= @episode.podcast.language %></h3>
+          <h3>Language: <%= @episode.podcast.country %></h3>
           <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
-            <button type="button" class="btn btn-info" aria-label="Left Align">
-              <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
-              <span class="badge"><%= @podcast.get_upvotes.size %></span>
-            </button>
+          <button type="button" class="btn btn-info" aria-label="Left Align">
+            <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+            <span class="badge"><%= @podcast.get_upvotes.size %></span>
+          </button>
           <% end %>
-
           <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
-            <button type="button" class="btn btn-info" aria-label="Left Align">
-              <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
-              <span class="badge"><%= @podcast.get_downvotes.size %></span>
-            </button>
+          <button type="button" class="btn btn-info" aria-label="Left Align">
+            <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+            <span class="badge"><%= @podcast.get_downvotes.size %></span>
+          </button>
           <% end %>
+          <div class="follow-button-area" id="user- <%= @podcast.id %>" style="float: right">
+          <% if current_user.following?(@podcast) %>
+          <%= button_to "Following", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+          <% elsif current_user != @podcast %>
+          <%= button_to "Follow", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+        <% end %>
+      </div>
         </div>
       </div>
-
       <div class="pod-descript">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -36,30 +42,11 @@
         </div>
       </div>  
     </div>  
-
-<!--   <%= link_to like_episode_path(@episode), class: "like", method: :put do %>
-  <button type="button" class="btn btn-info" aria-label="Left Align">
-    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
-    <span class="badge"><%= @episode.get_upvotes.size %></span>
-  </button>
-  <% end %>
-
-  <%= link_to unlike_episode_path(@episode), class: "like", method: :put do %>
-  <button type="button" class="btn btn-info" aria-label="Left Align">
-    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
-    <span class="badge"><%= @episode.get_downvotes.size %></span>
-  </button>
-  <% end %> -->
-
-  <div class="reviews">
-    <!-- 
-      <h1><%= @podcast.title %></h1>
-      <%= image_tag @podcast.image %> -->
+    <div class="reviews">
       <h3>Did you like <%= @episode.title %> ? Leave a comment below!</h3>
       <%= render 'comments/form_episodes', commentable: @episode %>
-      
       <% if @episode.comments  %>
-      <% @episode.comments.each do |comment| %>
+        <% @episode.comments.each do |comment| %>
         <p><strong><%= comment.user.email %> :</strong></p>
         <p><%= comment.comment %></p>
         <br>
