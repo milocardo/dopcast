@@ -47,9 +47,9 @@ Rails.application.routes.draw do
 
   get "/my_profile" => "users#my_profile", as: :my_profile
 
-  get "/feed" => "activities#feed", as: :feed
+  get "/all_activities" => "activities#all_activities", as: :all_activities
   get "/feed/fetch" => "activities#show", as: :fetch_activity
   get "/yours" => "activities#yours", as: :your_actions
-  get "/followings_feed" => "activities#followings_feed", as: :your_followings_actions
+  get "/feed" => "activities#feed", as: :feed
   get "/followers_feed" => "activities#followers_feed", as: :your_followers_actions
 end
