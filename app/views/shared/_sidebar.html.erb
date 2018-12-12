@@ -2,7 +2,7 @@
 
 <div class="sidenav hidden-xs hidden-md">
 	<% if user_signed_in? %>
-		<%= image_tag "avatar.png", class: "avatar-side" %>
+		<%= cl_image_tag current_user.photo, class: "avatar-side" %>
 		<div class="sidenav-signin">
 			<%= link_to "Home", root_path %>
 			<a href="#later">Trending</a>
