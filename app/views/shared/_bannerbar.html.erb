@@ -1,12 +1,58 @@
 <div class="banner-form">
   <div class="input-group">
-    <%= form_tag podcasts_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control-banner",
-      placeholder: "Search"
-      %>
-      <% end %>
-    </div>
+    <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
+      <%= form.text_field :q, class: "form-control-banner", placeholder: "Search", value: params.dig(:query, :q) %>
+
+
+        <div class="filter-text"> <strong>Advanced Filters</strong></div>
+
+          <div><svg class="arrows">
+                        <path class="a1" d="M0 0 L30 32 L60 0"></path>
+                        <path class="a2" d="M0 20 L30 52 L60 20"></path>
+                        <path class="a3" d="M0 40 L30 72 L60 40"></path>
+                </svg>
+          </div>
+
+          <div class="filter-checkbox">
+
+            <ul class="filter-checkbox">
+              <li><p class="category-checkbox">Categories</p>
+                <input type="checkbox" id="checkboxOne" value="Categories">
+                  <%= form.collection_check_boxes 'categories', Search.categories, :first, :last %>
+              </li>
+            </ul>
+
+            <ul class="filter-checkbox">
+              <li><p>Types</p>
+                <input type="checkbox" id="checkboxOne" value="Types">
+                <%= form.collection_check_boxes 'types', Search.types, :first, :last %>
+               </li>
+            </ul>
+
+            <ul class="filter-checkbox">
+              <li><p>Duration</p>
+                <input type="checkbox" id="checkboxOne" value="Duration">
+                <%= form.collection_check_boxes 'duration', Search.durations, :first, :last %>
+              </li>
+            </ul>
+
+            <ul class="filter-checkbox">
+              <li><p>Languages</p>
+                <input type="checkbox" id="checkboxOne" value="Languages">
+                <%= form.collection_check_boxes 'language', Search.languages, :first, :last %>
+              </li>
+            </ul>
+
+            <ul class="filter-checkbox">
+              <li><p>Sort by</p>
+                <input type="checkbox" id="checkboxOne" value="Sortby">
+                <%= form.collection_check_boxes 'sortby', Search.sortby, :first, :last %>
+              </li>
+            </ul>
+
+          </div>
+
+      <%= form.submit %>
+    <% end %>
   </div>
 </div>
