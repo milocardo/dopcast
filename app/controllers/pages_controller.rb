@@ -5,5 +5,4 @@ class PagesController < ApplicationController
     @podcasts = Podcast.all
     @episodes = Episode.all
   end
-
 end

@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 
 class PodcastsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @podcasts = Podcast.all
     if params[:query].present?
