@@ -3,7 +3,6 @@ require 'open-uri'
 
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all
     if params[:query].present?
       # Search all the podcasts with the query params
       @podcasts = HTTParty.get(
@@ -99,8 +98,8 @@ class PodcastsController < ApplicationController
           podcast: podcast
         )
       end
-      @podcast_results = PgSearch.multisearch(params[:query]).where(:searchable_type => "Podcast")
-      @episode_results = PgSearch.multisearch(params[:query]).where(:searchable_type => "Episode")
+      @podcasts = PgSearch.multisearch(params[:query]).where(:searchable_type => "Podcast")
+      @episodes = PgSearch.multisearch(params[:query]).where(:searchable_type => "Episode")
     else
       @podcasts = Podcast.all
     end
