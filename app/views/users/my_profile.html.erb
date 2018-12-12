@@ -1,37 +1,58 @@
-<h3><%= @user.username %></h3>
+<%= render "shared/sidebar" %>
+<div class="container-text">		
+	<div></div>
+	<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+	<h3><%= @user.username %></h3>
+	 <%= link_to "Add or change your photo", edit_user_path(@user) %>
 
-  <%= link_to "Add or change your photo", edit_user_path(@user) %>
+	<h2>Followers</h2>
+
+	<% @user.followers.each do |follower| %>
+	  <%= link_to follower.username, user_path(follower.id) %>
+	<% end %>
+	
+	<h2>Subscriptions</h2>
+
+<!-- 	< % @user.all_following.each do |following| % >
+	  < % if following.is_a? Podcast % >
+	    < %= link_to following.title, podcast_path(following.id) % >
+	  < % end % >
+	< % end % > -->
+
+	<div class="carousel">
+	  <div class="contain">
+	    <div class="scroll-row">
+	      <div class="row__inner">
+	        <% @user.all_following.each do |following| %>
+	          <div class="tile">
+	            <div class="tile__media">
+	              <div>
+              		<% if following.is_a? Podcast %>
+			    	<%= link_to following.title, podcast_path(following.id) %>
+				  <% end %>
+			<% end %>
+	              </div>
+	            </div>
+	          </div>
+	        <% end %>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-
-<%= link_to "Create a new playlist", new_user_playlist_path(current_user) %>
-
-<h2>Followers</h2>
-
-<% @user.followers.each do |follower| %>
-  <%= link_to follower.username, user_path(follower.id) %>
-<% end %>
+	
 
 
-<h2>Following</h2>
+	<h2>Following</h2>
 
-<% @user.all_following.each do |following| %>
-  <% if following.is_a? User %>
-    <%= link_to following.username, user_path(following.id) %>
-  <% end %>
-<% end %>
+	<% @user.all_following.each do |following| %>
+	  <% if following.is_a? User %>
+	    <%= link_to following.username, user_path(following.id) %>
+	  <% end %>
+	<% end %>
 
-
-
-<h2>Subscriptions</h2>
-
-<% @user.all_following.each do |following| %>
-  <% if following.is_a? Podcast %>
-    <%= link_to following.title, podcast_path(following.id) %>
-  <% end %>
-<% end %>
-
-
-<h2>Playlists</h2>
+	<h2>Playlists</h2>
+	<%= link_to "Create a new playlist", new_user_playlist_path(current_user) %>
+</div>
 
