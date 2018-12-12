@@ -1,34 +1,45 @@
 <%= render "shared/sidebar" %>
 
-<% if @episode_results.empty? && @podcast_results.empty? %>
+<% if @episodes.blank? && @podcasts.blank? %>
 
-  <div class="col-xs-12 col-sm-12 col-md-12 container-text">
-    <h3><strong>No search results</strong></h3>
-  </div>
+<div class="col-xs-12 col-sm-12 col-md-12 container-text">
+  <h3><strong>No search results</strong></h3>
+</div>
 
 <% else %>
 
-  <div class="container-text">
-    <div class="container-carousel">
+<div class="container-text">
+  <div class="container-carousel">
+
+    <% if @podcasts.present? %>
       <div class="arrow-left">
         <i class="icon-angle-left"></i>
       </div>
-
       <div class="col-xs-12 col-sm-12 col-md-12">
         <h3><strong>Podcasts</strong></h3>
-        <%= render "shared/carousel" %>
+        <%= render "shared/carousel", podcasts: @podcasts %>
+      </div>
+      <div class="arrow-right">
+        <i class="icon-angle-right"></i>
+      </div>
+    <% end %>
+
+    <% if @episodes.present? %>
+      <div class="arrow-left">
+        <i class="icon-angle-left"></i>
       </div>
       <%= render 'shared/loading' %>
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div id="episode-car">
           <h3><strong>Episodes</strong></h3>
-          <%= render "shared/episodes_carousel" %>
+          <%= render "shared/episodes_carousel", episodes: @episodes %>
         </div>
       </div>
-
       <div class="arrow-right">
         <i class="icon-angle-right"></i>
       </div>
-    </div>
+    <% end %>
+
   </div>
+</div>
 <% end %>
