@@ -19,4 +19,8 @@ class Episode < ApplicationRecord
 
   acts_as_votable
   acts_as_commentable
+
+  def searchable
+    self
+  end
 end

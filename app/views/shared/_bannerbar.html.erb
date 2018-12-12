@@ -19,35 +19,35 @@
             <ul class="filter-checkbox">
               <li><p class="category-checkbox">Categories</p>
                 <input type="checkbox" id="checkboxOne" value="Categories">
-                  <%= form.collection_check_boxes 'categories', Search.categories, :first, :last %>
+                  <%= form.collection_check_boxes 'genre_ids', Search.categories, :first, :last, include_hidden: false %>
               </li>
             </ul>
 
             <ul class="filter-checkbox">
               <li><p>Types</p>
                 <input type="checkbox" id="checkboxOne" value="Types">
-                <%= form.collection_check_boxes 'types', Search.types, :first, :last %>
+                <%= form.collection_check_boxes 'types', Search.types, :first, :last, include_hidden: false %>
                </li>
             </ul>
 
             <ul class="filter-checkbox">
               <li><p>Duration</p>
                 <input type="checkbox" id="checkboxOne" value="Duration">
-                <%= form.collection_check_boxes 'duration', Search.durations, :first, :last %>
+                <%= form.collection_check_boxes 'duration', Search.durations, :first, :last, include_hidden: false %>
               </li>
             </ul>
 
             <ul class="filter-checkbox">
               <li><p>Languages</p>
                 <input type="checkbox" id="checkboxOne" value="Languages">
-                <%= form.collection_check_boxes 'language', Search.languages, :first, :last %>
+                <%= form.collection_check_boxes 'language', Search.languages, :first, :last, include_hidden: false %>
               </li>
             </ul>
 
             <ul class="filter-checkbox">
               <li><p>Sort by</p>
                 <input type="checkbox" id="checkboxOne" value="Sortby">
-                <%= form.collection_check_boxes 'sortby', Search.sortby, :first, :last %>
+                <%= form.collection_check_boxes 'sortby', Search.sortby, :first, :last, include_hidden: false %>
               </li>
             </ul>
 

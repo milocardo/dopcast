@@ -9,7 +9,7 @@
 </div>
 
 <div class="checkbox-container hideme">
-  <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
+  <%#= form_for :query, method: :get, url: '/podcasts' do |form| %>
     <div class="filter-checkbox">
 
       <ul class="filter-checkbox">
@@ -23,7 +23,7 @@
       <ul class="filter-checkbox">
         <li><p>Types</p>
           <input type="checkbox" id="checkboxOne" value="Types">
-          <%= form.collection_check_boxes 'types', Search.types, :first, :last, include_hidden: false %>
+          <%= form.collection_check_boxes 'types', Search.types, :first, :last %>
          </li>
       </ul>
 

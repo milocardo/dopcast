@@ -2,16 +2,16 @@
 
 <% if @episodes.blank? && @podcasts.blank? %>
 
-<div class="col-xs-12 col-sm-12 col-md-12 container-text">
-  <h3><strong>No search results</strong></h3>
-</div>
+  <div class="col-xs-12 col-sm-12 col-md-12 container-text">
+    <h3><strong>No search results</strong></h3>
+  </div>
 
 <% else %>
 
-<div class="container-text">
-  <div class="container-carousel">
+  <div class="container-text">
+    <div class="container-carousel">
 
-    <% if @podcasts.present? %>
+      <% if @podcasts.present? %>
       <div class="arrow-left">
         <i class="icon-angle-left"></i>
       </div>
@@ -22,16 +22,13 @@
       <div class="arrow-right">
         <i class="icon-angle-right"></i>
       </div>
-<<<<<<< HEAD
-    <% end %>
+      <% end %>
 
-    <% if @episodes.present? %>
+      <% if @episodes.present? %>
       <div class="arrow-left">
         <i class="icon-angle-left"></i>
       </div>
-=======
       <%= render 'shared/loading' %>
->>>>>>> dd80a41f75650c07ef00d03a9e8e9336f722a418
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div id="episode-car">
           <h3><strong>Episodes</strong></h3>
@@ -41,8 +38,8 @@
       <div class="arrow-right">
         <i class="icon-angle-right"></i>
       </div>
-    <% end %>
+      <% end %>
 
+    </div>
   </div>
-</div>
 <% end %>
