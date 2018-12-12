@@ -14,13 +14,13 @@
             <h2>Author: <%= @podcast.publisher %></h2>
             <h3>Language: <%= @podcast.language %></h3>
             <h3>Country: <%= @podcast.country %></h3>
-            <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+            <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
             <button type="button" class="btn btn-info" aria-label="Left Align">
               <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
               <span class="badge"><%= @podcast.get_upvotes.size %></span>
             </button>
             <% end %>
-            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
             <button type="button" class="btn btn-info" aria-label="Left Align">
               <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
               <span class="badge"><%= @podcast.get_downvotes.size %></span>
