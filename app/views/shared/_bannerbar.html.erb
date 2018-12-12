@@ -1,8 +1,6 @@
 <div class="banner-form">
   <div class="input-group">
     <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
-
-    <%#= form_tag podcasts_path, method: :get do |form| %>
       <%= form.text_field :q, class: "form-control-banner", placeholder: "Search", value: params.dig(:query, :q) %>
 
 
