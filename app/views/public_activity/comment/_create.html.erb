@@ -5,10 +5,12 @@
     <% if a.trackable.commentable_type == "Podcast" %>
     <%= cl_image_tag a.trackable.user.photo, class: "img-feed" %>
       <p><%= link_to a.trackable.user.username, user_path(a.trackable.user) %> commented on <%= link_to a.trackable.commentable.title, podcast_path(a.trackable.commentable) %></p>
+      <%= image_tag a.trackable.commentable.image, class: "img-feed" %>
       <%= a.trackable.comment %>
     <% elsif a.trackable.commentable_type == "Episode" %>
     <%= cl_image_tag a.trackable.user.photo, class: "img-feed" %>
-      <p><%= link_to a.trackable.user.username, user_path(a.trackable.user) %> commented on episode <%= link_to a.trackable.commentable.title, episode_path(a.trackable.commentable) %> of podcast <%= link_to a.trackable.commentable.podcast.title, podcast_path(a.trackable.commentable.podcast) %></p></p>
+      <p><%= link_to a.trackable.user.username, user_path(a.trackable.user) %> commented on episode <%= link_to a.trackable.commentable.title, episode_path(a.trackable.commentable) %> of podcast <%= link_to a.trackable.commentable.podcast.title, podcast_path(a.trackable.commentable.podcast) %></p>
+      <%= image_tag a.trackable.commentable.podcast.image, class: "img-feed" %>
       <%= a.trackable.comment %>
     <% else %>
       A comment that is currently deleted was added.

@@ -36,8 +36,12 @@ class UsersController < ApplicationController
     current_user.stop_following(@user)
     respond_to :js
     respond_to do |format|
-     format.js {render inline: "location.reload();" }
+    format.js {render inline: "location.reload();" }
     end
+  end
+
+  def following?
+    current_user.follow?(@user)
   end
 
   private
@@ -45,10 +49,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:photo)
   end
-
-  # def following?
-  #   @current_user.follow?(@user)
-  # end
 
   # def follow_podcast
   #   @current_user.follow(@podcast)
