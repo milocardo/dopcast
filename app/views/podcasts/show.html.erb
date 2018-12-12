@@ -10,46 +10,46 @@
           </div>
         </div>
         <div class="col-xs-8">
-          <div class="pod-status"></div>
-          <h2>Author: <%= @podcast.publisher %></h2>
-          <h3>Language: <%= @podcast.language %> (change to language)</h3>
-          <h3>Country: <%= @podcast.country %></h3>
-          <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
-          <button type="button" class="btn btn-info" aria-label="Left Align">
-            <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
-            <span class="badge"><%= @podcast.get_upvotes.size %></span>
-          </button>
-          <% end %>
-          <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
-          <button type="button" class="btn btn-info" aria-label="Left Align">
-            <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
-            <span class="badge"><%= @podcast.get_downvotes.size %></span>
-          </button>
-          <% end %>
+          <div class="info-cards">
+            <h2>Author: <%= @podcast.publisher %></h2>
+            <h3>Language: <%= @podcast.language %></h3>
+            <h3>Country: <%= @podcast.country %></h3>
+            <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+            <button type="button" class="btn btn-info" aria-label="Left Align">
+              <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+              <span class="badge"><%= @podcast.get_upvotes.size %></span>
+            </button>
+            <% end %>
+            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+            <button type="button" class="btn btn-info" aria-label="Left Align">
+              <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+              <span class="badge"><%= @podcast.get_downvotes.size %></span>
+            </button>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div>
-    <% @podcast.episodes_list.each do |podcast| %>
-      <p><strong>Title:</strong> <%= podcast["title"] %></p>
-      <p><strong>Description:</strong> <%= podcast["description"] %></p>
-      <p><strong>Duration:</strong> <%= podcast["audio_length"] / 60 %> min</p>
-      <%= link_to("Play", podcast["audio"]) %>
-      <% end %>
+  <% @podcast.episodes_list.each do |podcast| %>
+  <div class="info-cards">
+    <p><strong>Title:</strong> <%= podcast["title"] %></p>
+    <p><strong>Description:</strong> <%= podcast["description"] %></p>
+    <p><strong>Duration:</strong> <%= podcast["audio_length"] / 60 %> min</p>
+    <%= link_to("Play", podcast["audio"]) %>
   </div>
+  <% end %>
 
-  <div class="reviews">
+  <!-- <div class="reviews">
     <h3>Leave a comment below!</h3>
-    <%= render 'comments/form_podcasts', commentable: @podcast %>
-    <% if @podcast.comments  %>
-      <% @podcast.comments.each do |comment| %>
-      <p><strong><%= comment.user.email %> :</strong></p>
-      <p><%= comment.comment %></p>
+    < %= render 'comments/form_podcasts', commentable: @podcast %>
+    < % if @podcast.comments  %>
+      < % @podcast.comments.each do |comment| %>
+      <p><strong>< %= comment.user.email %> :</strong></p>
+      <p>< %= comment.comment %></p>
       <br>
-      <% end %>
-    <% end %>
-  </div>
+      < % end %>
+    < % end %>
+  </div> -->
 </div>
 

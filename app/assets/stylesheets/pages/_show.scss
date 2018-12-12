@@ -1,6 +1,6 @@
 .podcard-show {
   padding-top: 15px;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
   display: inline-block;
 }
 
@@ -24,9 +24,9 @@
   padding-bottom: 25px;
 }
 
-.pod-descript {
-  padding-top: 50px;
-}
+// .pod-descript {
+//   padding-top: 50px;
+// }
 
 .container-show {
   margin-top: 50px;
@@ -55,4 +55,13 @@
     p {
   font-size: 20px;
   }
+}
+
+.info-cards {
+  background: #fff;
+  box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
