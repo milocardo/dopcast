@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   layout false, only: :show
   before_action :authenticate_user!, only: :yours
 
-  def feed
+  def index
     @activities = PublicActivity::Activity.order("created_at DESC").all
 
     respond_to do |format|

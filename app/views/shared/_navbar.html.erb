@@ -7,38 +7,37 @@
   <!-- Static search bar with magnifying glass-->
   <div class="navbar-form">
     <div class="input-group">
-      <%= form_tag podcasts_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "Search"
-        %>
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-        </div>
-        <% end %>
+      <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
+      <%= form.text_field :q, class: "form-control-banner", placeholder: "Search", value: params.dig(:query, :q) %>
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
       </div>
+      <% end %>
     </div>
+  </div>
 
-<!-- Search bar with button -->
+  <!-- Search bar with button -->
 <!--   <form class="navbar-form navbar-left">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Podcasts & episodes">
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
- -->
+-->
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <% if user_signed_in? %>
-
+<!-- Right Navigation -->
+<div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Links when logged in -->
     <%= link_to "Feed", feed_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Profile", my_profile_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
+  <% if user_signed_in? %>
+
+  <!-- Links when logged in -->
+  <%= link_to "Discover", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+  <%= link_to "Playlists", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+  <%= link_to "Friends", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Avatar with dropdown menu -->
 <!--     <div class="navbar-wagon-item">
@@ -68,18 +67,49 @@
     <% else %>
     <!-- Login link (when logged out) -->
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "log-button" %>
+
     <% end %>
   </div>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+  <!-- Avatar with dropdown menu -->
+  <div class="navbar-wagon-item">
     <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+          <%= link_to "#" do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+          <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
+  <% else %>
+
+  <!-- Login link (when logged out) -->
+  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "log-button" %>
+  <% end %>
+</div>
+
+<!-- Dropdown list appearing on mobile only -->
+<div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="dropdown">
+    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <li><a href="#">Some mobile link</a></li>
+      <li><a href="#">Other one</a></li>
+      <li><a href="#">Other one</a></li>
+    </ul>
+  </div>
+</div>
 </div>
