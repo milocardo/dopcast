@@ -11,16 +11,16 @@
         </div>
         <div class="col-xs-8">
           <div class="info-cards">
-            <h2>Author: <%= @podcast.publisher %></h2>
+            <h3>Author: <%= @podcast.publisher %></h3>
             <h3>Language: <%= @podcast.language %></h3>
             <h3>Country: <%= @podcast.country %></h3>
-            <%= link_to like_podcast_path(@podcast), class: "like", method: :put do %>
+            <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
             <button type="button" class="btn btn-info" aria-label="Left Align">
               <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
               <span class="badge"><%= @podcast.get_upvotes.size %></span>
             </button>
             <% end %>
-            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :put do %>
+            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
             <button type="button" class="btn btn-info" aria-label="Left Align">
               <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
               <span class="badge"><%= @podcast.get_downvotes.size %></span>
@@ -31,12 +31,13 @@
       </div>
     </div>
   </div>
+  <%= render 'shared/loading' %>
   <% @podcast.episodes_list.each do |podcast| %>
   <div class="info-cards">
     <p><strong>Title:</strong> <%= podcast["title"] %></p>
     <p><strong>Description:</strong> <%= podcast["description"] %></p>
     <p><strong>Duration:</strong> <%= podcast["audio_length"] / 60 %> min</p>
-    <%= link_to("Play", podcast["audio"]) %>
+    <%= link_to("Play", podcast["audio"], target: '_blank') %>
   </div>
   <% end %>
 
