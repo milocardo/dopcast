@@ -16,14 +16,14 @@
         <li><p class="category-checkbox">Categories</p>
 <!--         <div class="checkbox-column-category">
  -->          <input type="checkbox" id="checkboxOne" value="Categories"><!-- <label for="checkboxOne"> -->
-            <%= form.collection_check_boxes 'categories', Search.categories, :first, :last %>
+            <%= form.collection_check_boxes 'genre_ids', Search.categories, :first, :last %>
             </li>
       </ul>
 
       <ul class="filter-checkbox">
         <li><p>Types</p>
           <input type="checkbox" id="checkboxOne" value="Types">
-          <%= form.collection_check_boxes 'types', Search.types, :first, :last %>
+          <%= form.collection_check_boxes 'types', Search.types, :first, :last, include_hidden: false %>
          </li>
       </ul>
 

@@ -1,0 +1,180 @@
+.list-group-item {
+}
+
+.feed-container {
+  display: flex;
+
+  .glyphicon {
+    display: flex;
+    padding: 12px;
+    align-items: center;
+
+  }
+
+  .img-feed-div {
+  position: relative;
+}
+
+  .feed-div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+    .feed-time {
+      // display: inline-block;
+    }
+
+    .feed-info {
+      // display: inline-block;
+
+      // a {
+      // display: flex;
+      // }
+    }
+
+  }
+}
+
+
+
+
+
+
+body {
+  margin: 0;
+  margin-bottom: 100px;
+}
+.text-center {
+  text-align: center;
+}
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+/* Your tabs CSS code here */
+
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-content: left;
+}
+
+.tab {
+  font-family: "Varela Round", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: lightgrey;
+  text-decoration: none;
+  padding: 5px 15px 0px 15px;
+}
+
+.tab.active {
+  color: black;
+  border-bottom: 5px solid lightgreen;
+  padding: 0px 15px 10px 15px;
+}
+
+.tab:hover {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+.message h2, .message h3{
+  margin: 0;
+}
+.inbox {
+  padding: 0px 20px;
+  list-style: none;
+  border-width: 10px;
+  border: 1px solid #D3D3D3;
+  margin: 0;
+}
+.message {
+  /* Your turn to design a flexbox message */
+  display: flex;
+  font-family: "Varela Round", sans-serif;
+  padding: 30px 10px;
+  align-items: center;
+  border-bottom: 1px solid #F1F2FB;
+}
+
+.message_avatar{
+  min-width: 10px;
+}
+
+.message_info {
+  padding-left: 10px;
+  min-width: 100px;
+}
+
+.message_body{
+  padding-left: 10px;
+  min-width: 100px;
+  flex-grow: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.message_status {
+  padding-left: 10px;
+  min-width: 100px;
+}
+
+.message_info .name {
+  font-size: 13px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.date {
+  font-size: 13px;
+  font-weight: 100;
+  color: #9D9D9D;
+}
+
+.message_body .object {
+  font-size: 13px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.content {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.message_status .status {
+  font-size: 14px;
+  font-weight: 700;
+  color: lightgreen;
+  margin-bottom: 10px;
+}
+
+.message_status .read {
+  font-size: 14px;
+  font-weight: 700;
+  color: darkgrey;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+}
+
+/* Your avatar CSS code here */
+
+
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}

@@ -1,5 +1,9 @@
 <li class="list-group-item">
-  <span class="glyphicon glyphicon-remove"></span>
-  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
-  A podcast was deleted
+  <div class="feed-container">
+
+    <span class="glyphicon glyphicon-trash"></span>
+    <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small>
+    A podcast was deleted
+
+  </div>
 </li>
