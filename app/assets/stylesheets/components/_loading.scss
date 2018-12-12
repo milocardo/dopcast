@@ -1,29 +1,30 @@
 #bars {
-    height: 30px;
-    left: 50%;
-    margin: -30px 0 0 -20px;
-    position: absolute;
-    top: 50%;
-    width: 40px;
+   height: 30px;
+   left: 50%;
+   margin: -30px 0 0 -20px;
+   position: absolute;
+   top: 50%;
+   width: 40px;
+   display: none;
 }
 
 .bar {
    background: #E20074;
-    bottom: 1px;
-    height: 3px;
-    position: absolute;
-    width: 3px;      
-    animation: sound 0ms -800ms linear infinite alternate;
+   bottom: 3px;
+   height: 6px;
+   position: absolute;
+   width: 6px;      
+   animation: sound 0ms -800ms linear infinite alternate;
 }
 
 @keyframes sound {
     0% {
        opacity: .35;
-        height: 3px; 
+        height: 5px; 
     }
     100% {
         opacity: 1;       
-        height: 28px;        
+        height: 60px;        
     }
 }
 
@@ -36,4 +37,4 @@
 .bar:nth-child(7)  { left: 25px; animation-duration: 441ms; }
 .bar:nth-child(8)  { left: 29px; animation-duration: 419ms; }
 .bar:nth-child(9)  { left: 33px; animation-duration: 487ms; }
-.bar:nth-child(10) { left: 37px; animation-duration: 442ms; }​
+.bar:nth-child(10)  { left: 37px; animation-duration: 442ms; }
