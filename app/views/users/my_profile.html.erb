@@ -5,6 +5,7 @@
 
 <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
 
+<%= link_to "Create a new playlist", new_user_playlist_path(current_user) %>
 
 <h2>Followers</h2>
 
@@ -30,3 +31,7 @@
     <%= link_to following.title, podcast_path(following.id) %>
   <% end %>
 <% end %>
+
+
+<h2>Playlists</h2>
+

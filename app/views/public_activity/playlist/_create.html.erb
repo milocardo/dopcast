@@ -1,0 +1,10 @@
+<li class="list-group-item">
+  <span class="glyphicon glyphicon-plus"></span>
+  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
+  <% if a.trackable %>
+    <%= cl_image_tag a.trackable.user, class: "img-feed" %>
+    <%= link_to a.trackable.user.username, user_path(a.trackable.user) %> created the playlist <%= link_to a.trackable.name, user_playlist_path(a.trackable) %>
+  <% else %>
+    A podcast that is currently deleted was added.
+  <% end %>
+</li>

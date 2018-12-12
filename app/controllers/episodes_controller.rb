@@ -18,26 +18,29 @@ class EpisodesController < ApplicationController
   def upvote
     @episode = Episode.find(params[:id])
     @episode.upvote_from current_user
-    respond_to :js
-    respond_to do |format|
-      format.js {render inline: "location.reload();" }
-    end
+    @episode.create_activity(:like, owner: current_user)
+  #   respond_to :js
+  #   respond_to do |format|
+  #     format.js {render inline: "location.reload();" }
+  #   end
+  # end
     # if request.env['PATH_INFO'] == "/"
-    #   redirect_to episode_path(@episode)
+      redirect_to episode_path(@episode)
     # else
-    #   redirect_to root_path
-    # end
-  end
+      # redirect_to root_path
+    end
+
 
   def downvote
     @episode = Episode.find(params[:id])
     @episode.downvote_from current_user
-    respond_to :js
-    respond_to do |format|
-      format.js {render inline: "location.reload();" }
-    end
+    @episode.create_activity(:dislike, owner: current_user)
+    # respond_to :js
+    # respond_to do |format|
+    #   format.js {render inline: "location.reload();" }
+    # end
     # if request.env['PATH_INFO'] == "/"
-    #   redirect_to episode_path(@episode)
+      redirect_to episode_path(@episode)
     # else
     #   redirect_to root_path
     # end

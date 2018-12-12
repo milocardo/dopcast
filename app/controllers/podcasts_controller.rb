@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 
 class PodcastsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:query][:types].include?("podcast") || params[:query][:types] == [""]
       @podcasts = HTTParty.get(
@@ -238,6 +239,7 @@ class PodcastsController < ApplicationController
   def upvote
     @podcast = Podcast.find(params[:id])
     @podcast.upvote_from current_user
+    @podcast.create_activity(:like, owner: current_user)
     if request.env['PATH_INFO'] == "/"
       redirect_to root_path
     else
@@ -248,6 +250,7 @@ class PodcastsController < ApplicationController
   def downvote
     @podcast = Podcast.find(params[:id])
     @podcast.downvote_from current_user
+    @podcast.create_activity(:dislike, owner: current_user)
     if request.env['PATH_INFO'] == "/"
       redirect_to root_path
     else
