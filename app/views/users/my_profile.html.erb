@@ -1,11 +1,30 @@
-<h3><%= @user.username %></h3>
+<div class="sidebar-wrap"> <%= render "shared/sidebar" %> </div>
 
-  <%= link_to "Add or change your photo", edit_user_path(@user) %>
+  <div class="container-text">
 
+    <h3><%= @user.username %></h3>
 
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+      <%= link_to "Add or change your photo", edit_user_path(@user) %>
+      <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+      <%= link_to "Create a new playlist", new_user_playlist_path(current_user) %>
 
-<%= link_to "Create a new playlist", new_user_playlist_path(current_user) %>
+    <div class="container-carousel">
+      <h2>Subscriptions</h2>
+        <div class="carousel">
+          <div class="contain">
+            <div class="scroll-row">
+              <div class="row__inner">
+                <% @user.all_following.each do |following| %>
+                <% if following.is_a? Podcast %>
+                <%= link_to following.title, podcast_path(following.id) %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
 
 <h2>Followers</h2>
 
@@ -23,15 +42,8 @@
 <% end %>
 
 
-
-<h2>Subscriptions</h2>
-
-<% @user.all_following.each do |following| %>
-  <% if following.is_a? Podcast %>
-    <%= link_to following.title, podcast_path(following.id) %>
-  <% end %>
-<% end %>
-
-
 <h2>Playlists</h2>
+
+  </div>
+
 
