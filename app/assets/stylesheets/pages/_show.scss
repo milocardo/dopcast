@@ -2,6 +2,7 @@
   padding-top: 15px;
   padding-bottom: 15px;
   display: inline-block;
+  width: 100%;
 }
 
 .podcard-show-epi {
@@ -64,4 +65,47 @@
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
 }
+
+.interaction-div {
+  background: #fff;
+  padding-left: 20px;
+  // margin-bottom: 20px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.info-div {
+  background: #fff;
+  padding-left: 20px;
+  // margin-bottom: 20px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podcard-img {
+  display:flex;
+  align-items: center;
+}
+
+
+
+.follow-button-area {
+  padding: 10px;
+}
+
+.vote-div {
+  padding: 10px;
+}
+
+// .btn btn-info {
+//   background-color: red;
+// }
