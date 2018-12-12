@@ -44,6 +44,9 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
   resources :activities
+
+  get "/my_profile" => "users#my_profile", as: :my_profile
+
   get "/feed" => "activities#feed", as: :feed
   get "/feed/fetch" => "activities#show", as: :fetch_activity
   get "/yours" => "activities#yours", as: :your_actions
