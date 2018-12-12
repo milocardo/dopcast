@@ -11,7 +11,7 @@
         </div>
         <div class="col-xs-8">
           <div class="info-cards">
-            <h2>Author: <%= @podcast.publisher %></h2>
+            <h3>Author: <%= @podcast.publisher %></h3>
             <h3>Language: <%= @podcast.language %></h3>
             <h3>Country: <%= @podcast.country %></h3>
             <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
