@@ -19,34 +19,34 @@ class PodcastsController < ApplicationController
       request['results'].each do |podcast_info|
         # See if the podcast is on to the database
         podcast = Podcast.find_or_initialize_by(itunes_id: podcast_info['itunes_id'])
-        @podcasts << podcast
-        next if podcast.persisted?
 
-        # Search for all the information off the specific podcast
-        response = HTTParty.get(
-          "https://listennotes.p.mashape.com/api/v1/podcasts/#{podcast_info['id']}?next_episode_pub_date=1479154463000&sort=recent_first",
-          headers: {
-            "X-Mashape-Key" => ENV['ESPECIFIC_SEARCH_KEY'],
-            "Accept" => "application/json"
-          }
-        )
-        # If the podcast doesnt exist yet, create a new podcast
-        podcast.update(
-          total_episodes: response["total_episodes"],
-          itunes_id: response["itunes_id"],
-          image: response["image"],
-          title: response["title_original"],
-          episodes_list: response["episodes"],
-          country: response["country"],
-          description: response["description"],
-          language: response["language"],
-          lastest_pub_date_ms: response["lastest_pub_date_ms"],
-          earliest_pub_date_ms: response["earliest_pub_date_ms"],
-          publisher: response["publisher"],
-          genres: response["genres"],
-          extra: response["extra"]
-        )
-        @podcast << podcast
+        unless podcast.persisted?
+          # Search for all the information off the specific podcast
+          response = HTTParty.get(
+            "https://listennotes.p.mashape.com/api/v1/podcasts/#{podcast_info['id']}?next_episode_pub_date=1479154463000&sort=recent_first",
+            headers: {
+              "X-Mashape-Key" => ENV['ESPECIFIC_SEARCH_KEY'],
+              "Accept" => "application/json"
+            }
+          )
+          # If the podcast doesnt exist yet, create a new podcast
+          podcast.update(
+            total_episodes: response["total_episodes"],
+            itunes_id: response["itunes_id"],
+            image: response["image"],
+            title: response["title_original"],
+            episodes_list: response["episodes"],
+            country: response["country"],
+            description: response["description"],
+            language: response["language"],
+            lastest_pub_date_ms: response["lastest_pub_date_ms"],
+            earliest_pub_date_ms: response["earliest_pub_date_ms"],
+            publisher: response["publisher"],
+            genres: response["genres"],
+            extra: response["extra"]
+          )
+        end
+        @podcasts << podcast if podcast.persisted?
       end
       # @podcasts = PgSearch.multisearch(params[:query][:q]).where(:searchable_type => "Podcast")
     end
@@ -233,7 +233,7 @@ class PodcastsController < ApplicationController
   def query_params
     params_hash = {}
     params.require(:query)
-          .permit(:q, :genre_ids, :len_min, :len_max, language: [], genre_ids: [])
+          .permit(:q, len_max: [], language: [], genre_ids: [])
           .to_h
           .each { |key, value| params_hash[key] = value.is_a?(Array) ? value.join(',') : value }
     params_hash

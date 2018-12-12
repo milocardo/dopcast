@@ -1,6 +1,5 @@
 <div class="banner-form">
   <div class="input-group">
-<<<<<<< HEAD
     <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
       <%= form.text_field :q, class: "form-control-banner", placeholder: "Search", value: params.dig(:query, :q) %>
 
@@ -33,7 +32,7 @@
             <ul class="filter-checkbox">
               <li><p>Duration</p>
                 <input type="checkbox" id="checkboxOne" value="Duration">
-                <%= form.collection_check_boxes 'duration', Search.durations, :first, :last, include_hidden: false %>
+                <%= form.collection_check_boxes 'len_max', Search.durations, :first, :last, include_hidden: false %>
               </li>
             </ul>
 
@@ -55,7 +54,6 @@
 
       <%= form.submit %>
     <% end %>
-=======
     <%= form_tag podcasts_path, method: :get do %>
     <%= text_field_tag :query,
     params[:query],
@@ -64,6 +62,5 @@
       id: "load" %>
       <% end %>
     </div>
->>>>>>> dd80a41f75650c07ef00d03a9e8e9336f722a418
   </div>
 </div>

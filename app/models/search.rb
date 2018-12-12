@@ -18,11 +18,11 @@ class Search
 
   TYPES = %w[podcast episode playlist]
   DURATIONS = [
-    ['0,15', '0 - 15 min'],
-    ['0,30', '0 - 30 min'],
-    ['0,45', '0 - 45 min'],
-    ['0,60', '0 - 60 min'],
-    ['0,1000', 'over 1 hour']
+    [15, '15 min'],
+    [30, '30 min'],
+    [45, '45 min'],
+    [60, '60 min'],
+    [1000, 'more than 1 hour']
   ]
   LANGUAGES = %w[English Spanish French Portuguese]
   SORTBY = %w[popularity relevance rating newest oldest]
