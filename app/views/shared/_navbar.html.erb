@@ -37,7 +37,7 @@
     <!-- Links when logged in -->
     <%= link_to "Feed", feed_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Profile", my_profile_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to t(".log_out", default: "Log out"), destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".log_out", default: "Log out"), destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
 
     <!-- Avatar with dropdown menu -->
