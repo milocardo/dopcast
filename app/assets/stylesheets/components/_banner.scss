@@ -7,22 +7,12 @@ body {
   text-align: center;
   min-height: 100vh;
   width: 100vw;
-  // width: auto;
-  // height: auto;
-
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
-  background-repeat: no-repeat;
   display: flex;
-  position: fixed;
-  justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
-  bottom: auto;
-  box-sizing: border-box;
-  // width: 1013px;
-  // height: 591px;
+  flex-direction: column;
+  padding-top: 30vh;
+
 }
 
 .banner h1 {
