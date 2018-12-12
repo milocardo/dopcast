@@ -1,11 +1,16 @@
+
 <li class="list-group-item">
-  <span class="glyphicon glyphicon-plus"></span>
-  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
-  <% if a.trackable %>
-    <%= link_to a.trackable.title, podcast_path(a.trackable) %> was added to Dopcast
-  <% else %>
-    A podcast that is currently deleted was added.
-  <% end %>
-  <%= image_tag a.trackable.image, class: "img-feed" %>
+  <div class="feed-container">
+    <%= image_tag a.trackable.image, class: "img-feed" %>
+    <span class="glyphicon glyphicon-download-alt"></span>
+    <div class="feed-content">
+      <small class="text-muted"> <div class="feed-time"><%= a.created_at.strftime('%b %e, %l:%M %p') %></div></small>
+      <% if a.trackable %>
+        <div class="feed-info"><%= link_to a.trackable.title, podcast_path(a.trackable) %> was added to Dopcast </div>
+      <% else %>
+        A podcast that is currently deleted was added.
+      <% end %>
+    </div>
+  </div>
 </li>
 
