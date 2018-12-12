@@ -11,7 +11,7 @@ class User < ApplicationRecord
   include PublicActivity::Activist
   tracked #owner: proc { |controller, model| controller.current_user ? controller.current_user : nil }
 
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   acts_as_voter
   acts_as_followable

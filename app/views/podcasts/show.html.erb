@@ -36,7 +36,7 @@
     <p><strong>Title:</strong> <%= podcast["title"] %></p>
     <p><strong>Description:</strong> <%= podcast["description"] %></p>
     <p><strong>Duration:</strong> <%= podcast["audio_length"] / 60 %> min</p>
-    <%= link_to("Play", podcast["audio"]) %>
+    <%= link_to("Play", podcast["audio"], target: '_blank') %>
   </div>
   <% end %>
 
