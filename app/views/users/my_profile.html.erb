@@ -5,7 +5,11 @@
 
 <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
 
-<%= link_to "Create a new playlist", new_user_playlist_path(current_user) %>
+<!-- < %= link_to "Create a new playlist", new_user_playlist_path(current_user) % >
+ -->
+
+ <%= link_to "Find new friends", users_path %>
+
 
 <h2>Followers</h2>
 
