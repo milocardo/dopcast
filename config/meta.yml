@@ -1,0 +1,5 @@
+meta_product_name: "dopcast"
+meta_title: "dopcast - the best directory of podcasts"
+meta_description: "Our platform is offering new features to listeners: an advanced search engine, a customizable user interface, and a new interactive user experience."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: ""   # required for Twitter Cards
