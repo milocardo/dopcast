@@ -1,0 +1,15 @@
+<div class="carousel">
+  <div class="contain">
+    <div class="scroll-row">
+      <div class="row__inner">
+        <% playlists.each do |playlist| %>
+          <div class="tile">
+            <div class="tile__media">
+              <%= playlist.playlist_episodes.first.episode %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
