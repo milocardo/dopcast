@@ -1,5 +1,3 @@
-
-
 <% if @episodes.blank? && @podcasts.blank? %>
 
   <div class="col-xs-12 col-sm-12 col-md-12 container-text">
@@ -11,33 +9,34 @@
   <div class="container-text">
     <div class="container-carousel">
       <% if @podcasts.present? %>
-      <div class="arrow-left">
-        <i class="icon-angle-left"></i>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <h3><strong>Podcasts</strong></h3>
-        <%= render "shared/carousel", podcasts: @podcasts %>
-      </div>
-      <div class="arrow-right">
-        <i class="icon-angle-right"></i>
-      </div>
+        <div class="arrow-left">
+          <i class="icon-angle-left"></i>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <h3><strong>Podcasts</strong></h3>
+          <%= render "shared/carousel", podcasts: @podcasts %>
+        </div>
+        <div class="arrow-right">
+          <i class="icon-angle-right"></i>
+        </div>
       <% end %>
     </div>
 
     <% if @episodes.present? %>
      <h3><strong>Episodes</strong></h3>
       <br>
-          <% if @episodes.present? %>
+        <% if @episodes.present? %>
           <%= render 'shared/loading' %>
-              <% @episodes.each do |episode| %>
-              <li class="episode-list-item">
-                <div class="episode-list-img"><%=link_to( image_tag(episode.searchable.image), episode_path(episode.searchable.id), :class=>"img-size") %></div>
-                  <div class="episode-list-info"> <h3><%= episode.title %></h3>
-                  <h6> <%= episode.podcast.title %> </h6>
-                  <p>Language: <%= episode.podcast.language %></p></div>
-                <% end %>
-                <% end %>
-              </li>
+          <% @episodes.each do |episode| %>
+            <li class="episode-list-item">
+              <div class="episode-list-img"><%=link_to( image_tag(episode.searchable.image), episode_path(episode.searchable.id), :class=>"img-size") %></div>
+              <div class="episode-list-info"> <h3><%= link_to(episode.title, episode_path(episode.searchable.id)) %></h3>
+                <h6> <%= episode.podcast.title %> </h6>
+                <p>Language: <%= episode.podcast.language %></p>
+              </div>
+            </li>
           <% end %>
+        <% end %>
+    <% end %>
   </div>
 <% end %>
