@@ -1,13 +1,16 @@
 <div class="white-navbar navbar-fixed-top">
 
-  <div class="navbar-form d-block">
-      <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
-      <%= form.text_field :q, class: "form-control-banner", placeholder: "Search", value: params.dig(:query, :q) %>
-      <div class="input-group-btn">
-        <button class="btn btn-default" id="load" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+
+    <div class="stage">
+      <div class="cell">
+        <div class="searchbar">
+          <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
+      <%= form.text_field :query, class: "btn-extended", placeholder: "Search", value: params.dig(:query, :q) %>
+            <% end %>
+          <div class="btn-search"></div>
+        </div>
       </div>
-      <% end %>
-  </div>
+    </div>
 
   <div class="white-navbar-right hidden-xs hidden-sm">
 
@@ -26,3 +29,16 @@
     <% end %>
   </div>
 </div>
+<script language="javaScript">
+  $('.btn-search').click(function(){
+  console.log("test")
+  $('.searchbar').toggleClass('clicked');
+  $('.stage').toggleClass('faded');
+
+
+  if($('.searchbar').hasClass('clicked')){
+    $('.btn-extended').focus();
+  }
+
+});
+</script>
