@@ -4,9 +4,9 @@
     <div class="stage">
       <div class="cell">
         <div class="searchbar">
-          <%= form_for :query, method: :get, url: podcasts_path do |form| %>
-            <%= form.text_field :q, class: "btn-extended", placeholder: "Search", value: params.dig(:query, :q) %>
-          <% end %>
+          <%= form_for :query, method: :get, url: '/podcasts', :html => {:id => 'teste' } do |form| %>
+      <%= form.text_field :q, class: "btn-extended", placeholder: "Search", value: params.dig(:query, :q) %>
+            <% end %>
           <div class="btn-search"></div>
         </div>
       </div>
