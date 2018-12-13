@@ -29,7 +29,6 @@ class PodcastsController < ApplicationController
               "Accept" => "application/json"
             }
           )
-          # raise
           # If the podcast doesnt exist yet, create a new podcast
           podcast.update(
             total_episodes: response["total_episodes"],
