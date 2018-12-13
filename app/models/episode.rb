@@ -1,5 +1,6 @@
 class Episode < ApplicationRecord
   belongs_to :podcast, optional: true
+  belongs_to :playlist, optional: true
   has_many :reviews
 
   include PgSearch
