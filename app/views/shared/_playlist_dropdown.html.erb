@@ -1,0 +1,12 @@
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add to a Playlist
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href=new_user_playlist_path >Create a new Playlist</a>
+    <% current_user.playlist.each do |playlist| %>
+    <a class="dropdown-item" href=<%= user_playlist_path(playlist) %> ><%= playlist.name %></a>
+    <% end %>
+  </div>
+</div>
