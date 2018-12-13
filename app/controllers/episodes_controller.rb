@@ -4,7 +4,7 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    if Episode.find(params[:id])
+    if Episode.exists?(params[:id])
       @episode = Episode.find(params[:id])
       @podcast = Podcast.find(@episode.podcast_id)
     else
