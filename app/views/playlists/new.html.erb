@@ -1,5 +1,24 @@
 <h2>Create a new Playlist</h2>
 
-form para name
+<!-- <form>
+  <div class="form-group">
+    <label for="InputPlaylistName">New Playlist name</label>
+    <input type="text" class="form-control" id="InputPlaylistName" aria-describedby="nameHelp" placeholder="Enter your new Playlist name">
+  </div>
 
-search para episodes
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+ -->
+
+<%= simple_form_for [current_user, @playlist] do |f| %>
+  <%= f.input :name %>
+  <%= f.hidden_field :episode_id, value: params["episode_id"] %>
+  <%= f.submit %>
+<% end %>
+
+
+<!--  <form action="user_playlists_path", method="post">
+  <input type="text" name="playlistname" value=<%=  %>><br>
+  <input type="submit" value="Submit">
+</form> -->
+

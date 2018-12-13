@@ -6,7 +6,6 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    set_playlist
   end
 
   # def list_playlists
@@ -24,22 +23,20 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
-    @playlist.save
+    @playlist.user = current_user
+    @playlist.save!
     redirect_to playlist_path(@playlist)
   end
 
   def edit
-    set_playlist
   end
 
   def update
-    set_playlist
     @playlist.update(playlist_params)
     redirect_to playlists_path(@playlist)
   end
 
   def destroy
-    set_playlist
     @playlist.destroy
     redirect_to playlists_path
   end
@@ -47,7 +44,7 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name, :address)
+    params.require(:playlist).permit(:name, :episode)
   end
 
   def set_playlist

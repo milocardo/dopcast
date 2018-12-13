@@ -41,3 +41,7 @@
 
 <h2>Playlists</h2>
 
+<% current_user.playlists.each do |playlist| %>
+<%= playlist.name %>
+<%= playlist.episodes %>
+<% end %>

@@ -1,0 +1,9 @@
+<h2>Edit this Playlist</h2>
+
+<h3><%= @playlist.name %></h3>
+
+<h4><% @playlist.episodes.each do |episode| %>
+  <%= link_to episode.title, episode_path(episode) %>
+  <% end %></h4>
+
+

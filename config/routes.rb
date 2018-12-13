@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post "follow" => "users#follow"
       post "unfollow" => "users#unfollow"
     end
-    resources :playlists
+    resources :playlists, shallow: true
     resources :subscriptions
       member do
         get :mentionable
