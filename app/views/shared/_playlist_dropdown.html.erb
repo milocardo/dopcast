@@ -6,7 +6,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href=<%= new_user_playlist_path(current_user, episode_id: @episode.id) %> >Create a new Playlist</a>
     <% current_user.playlists.each do |playlist| %>
-    <a class="dropdown-item" href=<%= edit_playlist_path(playlist) %> ><%= playlist.name %></a>
+    <a class="dropdown-item" href=<%= add_episode_to_playlist_playlist_path(playlist, episode_id: @episode.id) %> ><%= playlist.name %></a>
     <% end %>
   </div>
 </div>
