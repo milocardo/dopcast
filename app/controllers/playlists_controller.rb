@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :add_episode_to_playlist]
 
   def index
     @playlist = Playlist.all
@@ -25,6 +25,14 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     @playlist.user = current_user
     @playlist.save!
+    if params["playlist"]["episode_id"]
+      @playlist.episodes << Episode.find(params["playlist"]["episode_id"])
+    end
+    redirect_to playlist_path(@playlist)
+  end
+
+  def add_episode_to_playlist
+    @playlist.episodes << Episode.find(params["episode_id"])
     redirect_to playlist_path(@playlist)
   end
 

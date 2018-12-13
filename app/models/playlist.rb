@@ -1,8 +1,10 @@
 class Playlist < ApplicationRecord
-  has_many :episodes
+  has_many :playlist_episodes
+  has_many :episodes, through: :playlist_episodes
   belongs_to :user
+
   include PgSearch
-  multisearchable against: %i[name episode_id user_id]
+  multisearchable against: %i[name user_id]
   include PublicActivity::Model
   tracked
 

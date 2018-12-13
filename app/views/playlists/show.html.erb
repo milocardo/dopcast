@@ -1,1 +1,7 @@
 <%= render "shared/whitenavbar" %>
+
+<h2><%= @playlist.name %></h2>
+
+<% @playlist.episodes.each do |episode| %>
+  <%= episode.title %>
+<% end %>

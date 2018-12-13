@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_113719) do
+ActiveRecord::Schema.define(version: 2018_12_13_193520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,13 +87,20 @@ ActiveRecord::Schema.define(version: 2018_12_11_113719) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
+  create_table "playlist_episodes", force: :cascade do |t|
+    t.bigint "episode_id"
+    t.bigint "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_playlist_episodes_on_episode_id"
+    t.index ["playlist_id"], name: "index_playlist_episodes_on_playlist_id"
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.string "name"
-    t.bigint "episode_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["episode_id"], name: "index_playlists_on_episode_id"
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
@@ -166,7 +173,6 @@ ActiveRecord::Schema.define(version: 2018_12_11_113719) do
   end
 
   add_foreign_key "episodes", "podcasts"
-  add_foreign_key "playlists", "episodes"
   add_foreign_key "playlists", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "subscriptions", "podcasts"

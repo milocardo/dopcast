@@ -1,6 +1,9 @@
 class Episode < ApplicationRecord
   belongs_to :podcast, optional: true
+  has_many :playlist_episodes
+  has_many :playlists, through: :playlist_episodes
   has_many :reviews
+
 
   include PgSearch
   multisearchable against: [ :audio_length,
