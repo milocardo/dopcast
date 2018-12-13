@@ -33,11 +33,11 @@
                 <% end %>
               </div>
               <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
-                <% if current_user.following?(@podcast) %>
+                <% #if current_user.following?(@podcast) %>
                 <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-                <% elsif current_user != @podcast %>
+                <% #elsif current_user != @podcast %>
                 <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
-                <% end %>
+                <% #end %>
               </div>
             </div>
           </div>
@@ -52,6 +52,7 @@
       <div class="title-duration"><h3><%= link_to(episode["title"], episode_path(id: episode["id"], podcast: @podcast.id)) %></h3><div class="duration"><%= episode["audio_length"] / 60 %> min</div></div>
       <div class="play-button"><span class="glyphicon glyphicon-play-circle"></span>
       <%= link_to("Listen", episode["audio"], target: '_blank') %></div>
+      <div><%= episode["description"].html_safe %></div>
     </div>
   <% end %>
 

@@ -1,11 +1,11 @@
-require 'json'
-require 'open-uri'
+# require 'json'
+# require 'open-uri'
 
 class PodcastsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params.dig(:query, :types)&.include?("podcast") || params.dig(:query, :types).nil?
+    if params.dig(:query, :type)&.include?("podcast") || params.dig(:query, :type).nil?
       request = HTTParty.get(
         "https://listennotes.p.mashape.com/api/v1/search",
         headers: {
@@ -13,18 +13,17 @@ class PodcastsController < ApplicationController
           "Accept" => "application/json"
         },
         query: {
-          'types' => 'podcast'
+          'type' => 'podcast'
         }.merge(query_params)
       )
       @podcasts = []
       request['results'].each do |podcast_info|
         # See if the podcast is on to the database
         podcast = Podcast.find_or_initialize_by(itunes_id: podcast_info['itunes_id'])
-
         unless podcast.persisted?
           # Search for all the information off the specific podcast
           response = HTTParty.get(
-            "https://listennotes.p.mashape.com/api/v1/podcasts/#{podcast_info['id']}?next_episode_pub_date=1479154463000&sort=recent_first",
+            "https://listennotes.p.mashape.com/api/v1/podcasts/#{podcast_info['id']}?sort=recent_first",
             headers: {
               "X-Mashape-Key" => ENV['ESPECIFIC_SEARCH_KEY'],
               "Accept" => "application/json"
@@ -49,17 +48,17 @@ class PodcastsController < ApplicationController
         end
         @podcasts << podcast if podcast.persisted?
       end
-      # @podcasts = PgSearch.multisearch(params[:query][:q]).where(:searchable_type => "Podcast")
+      #@podcasts = PgSearch.multisearch(params[:query][:q]).where(:searchable_type => "Podcast")
     end
 
-    if params.dig(:query, :types)&.include?("episode") || params.dig(:query, :types).nil?
+    if params.dig(:query, :type)&.include?("episode") || params.dig(:query, :type).nil?
       request = HTTParty.get(
         "https://listennotes.p.mashape.com/api/v1/search",
         headers: {
           "X-Mashape-Key" => ENV['FULL_SEARCH_KEY'],
           "Accept" => "application/json"
         }, query: {
-          'types' => 'episode'
+          'type' => 'episode'
         }.merge(query_params)
       )
 
@@ -234,7 +233,7 @@ class PodcastsController < ApplicationController
   def query_params
     params_hash = {}
     params.require(:query)
-          .permit(:q, len_max: [], language: [], genre_ids: [])
+          .permit(:q, len_max: [], language: [], genre_ids: [], type: [])
           .to_h
           .each { |key, value| params_hash[key] = value.is_a?(Array) ? value.join(',') : value }
     params_hash
