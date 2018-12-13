@@ -54,9 +54,10 @@
   </div>
 
   <%= render 'shared/loading' %>
+  <!-- Iterate through the episodes list of podcast and return the data -->
   <% @podcast.episodes_list.each do |episode| %>
   <div class="info-episode-list">
-    <div class="title-duration"><h3><%= episode["title"] %></h3> <div class="duration"><%= episode["audio_length"] / 60 %> min</div></div>
+    <div class="title-duration"><h3><%= link_to(episode["title"], episode_path(id: episode["id"], podcast: @podcast.id)) %></h3> <div class="duration"><%= episode["audio_length"] / 60 %> min</div></div>
     <div class="play-button"><span class="glyphicon glyphicon-play-circle"></span>
     <%= link_to("Listen", episode["audio"], target: '_blank') %>
     </div>

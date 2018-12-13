@@ -4,8 +4,32 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    @episode = Episode.find(params[:id])
-    @podcast = Podcast.find(@episode.podcast_id)
+    if Episode.find(params[:id])
+      @episode = Episode.find(params[:id])
+      @podcast = Podcast.find(@episode.podcast_id)
+    else
+        # Search all the information of an specific episode
+        response = HTTParty.get(
+          "https://listennotes.p.mashape.com/api/v1/episodes/#{params['id']}",
+          headers: {
+            "X-Mashape-Key" => ENV['ESPECIFIC_SEARCH_KEY'],
+            "Accept" => "application/json"
+          }
+        )
+
+        # If the podcast doesnt exist yet, create a new podcast
+        @episode = Episode.create(
+          korean_episode_id: params[:id],
+          title: response["title"],
+          audio_length: response["audio_length"],
+          audio: response["audio"],
+          description: response["description"],
+          pub_date_ms: response["pub_date_ms"],
+          image: response["image"],
+          podcast: Podcast.find(params[:podcast])
+        )
+        @podcast = Podcast.find(params[:podcast])
+    end
   end
 
   # def add_new_comment
