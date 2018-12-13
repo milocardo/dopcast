@@ -12,6 +12,5 @@ const bodytest = document.getElementsByTagName("body");
 
 button.addEventListener("click", (event) => {
 	loading.style.display = "block";
-	bodytest[0].style.opacity = "0.5";
-	loading.style.opacity = "1";
+	bodytest[0].style.opacity = "0.2";
 });
