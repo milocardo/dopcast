@@ -54,11 +54,19 @@
 
 #episode-show {
   flex-direction: column !important;
+    display: flex;
+    justify-content: space-around;
+    /* width: 100%; */
+    margin-right: 160px;
+    /* display: block; */
+    align-items: center;
 }
 
 .reviews {
-  margin-left: 80px;
-  margin-right: 500px;
+  // margin-left: 200px;
+  // margin-right: 380px;
+  display: block;
+  align-items: center;
 
     p {
   font-size: 20px;
