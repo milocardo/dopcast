@@ -3,18 +3,21 @@
   <div class="container-show">
     <div class="podcard-show">
       <div class="row">
-        <div class="col-xs-3">
-          <div class="podcard-img">
-            <%= image_tag @podcast.image, class: "img-responsive" %>
-          </div>
         </div>
         <div class="col-xs-8">
           <div class="info-cards">
             <div class="info-div">
               <h1><%= @podcast.title %></h1>
-              <h3>Author: <%= @podcast.publisher %></h3>
-              <h3>Language: <%= @podcast.language %></h3>
-              <h3>Country: <%= @podcast.country %></h3>
+              <div class="img-info-div">
+                <div class="podcard-img">
+                  <%= image_tag @podcast.image, class: "img-responsive" %>
+                </div>
+               <div class="minor-info-div">
+                  <h2><%= @podcast.publisher %></h3>
+                  <h3>Language: <%= @podcast.language %></h3>
+                  <h3>Country: <%= @podcast.country %></h3>
+               </div>
+              </div>
             </div>
 
 
@@ -36,9 +39,9 @@
 
             <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
               <% if current_user.following?(@podcast) %>
-              <%= button_to "Following", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+              <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
               <% elsif current_user != @podcast %>
-              <%= button_to "Follow", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+              <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
               <% end %>
             </div>
 
@@ -48,21 +51,14 @@
     </div>
   </div>
 
-  <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
-    <% if current_user.following?(@podcast) %>
-      <%= button_to "Following", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-    <% elsif current_user != @podcast %>
-      <%= button_to "Follow", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
-    <% end %>
-  </div>
-
   <%= render 'shared/loading' %>
   <% @podcast.episodes_list.each do |episode| %>
-  <div class="info-cards">
-    <p><strong>Title:</strong> <%= episode["title"] %></p>
-    <p><strong>Description:</strong> <%= episode["description"].html_safe %></p>
-    <p><strong>Duration:</strong> <%= episode["audio_length"] / 60 %> min</p>
-    <%= link_to("Play", episode["audio"], target: '_blank') %>
+  <div class="info-episode-list">
+    <div class="title-duration"><h3><%= episode["title"] %></h3> <div class="duration"><%= episode["audio_length"] / 60 %> min</div></div>
+    <div class="play-button"><span class="glyphicon glyphicon-play-circle"></span>
+    <%= link_to("Listen", episode["audio"], target: '_blank') %>
+    </div>
+    <p> <%= episode["description"].html_safe %></p>
   </div>
   <% end %>
 

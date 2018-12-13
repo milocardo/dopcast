@@ -17,12 +17,12 @@
 
 .podcard-show h1, h2, h3 {
   margin: 0px;
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
 }
 
 .podcard-show-epi h1, h2, h3 {
   margin: 0px;
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
 }
 
 // .pod-descript {
@@ -88,15 +88,50 @@
   left: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+    .minor-info-div {
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .img-info-div {
+      padding-top: 5px;
+      margin-top: 15px;
+      display: flex;
+    }
+
+    h1 {
+      margin-top: 0 !important;
+      padding-top: 20px;
+      font-size: 30px;
+      font-color: dark-grey;
+      padding-bottom: 0 !important;
+    }
+
+    h2 {
+      font-size: 25px;
+      padding-bottom: 25px;
+      font-style: italic;
+      font-weight: 600;
+      font-color: $light-gray !important;
+      padding-bottom: 0 !important;
+    }
+
+    h3 {
+      font-size: 15px;
+    }
+
+    p {
+      font-size: 9px;
+      margin-bottom: 0 !important;
+    }
 }
 
 .podcard-img {
   display:flex;
   align-items: center;
 }
-
-
 
 .follow-button-area {
   padding: 10px;
@@ -106,6 +141,54 @@
   padding: 10px;
 }
 
-// .btn btn-info {
-//   background-color: red;
-// }
+.btn btn-info {
+  border-color: $purple;
+
+}
+
+.info-episode-list {
+  background: #fff;
+  box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: space-between;
+
+      h3 {
+      font-size: 18px;
+      padding-bottom: 25px;
+      font-style: italic;
+      font-weight: 600;
+      font-color: $light-gray !important;
+      padding-bottom: 0 !important;
+    }
+}
+
+.play-button {
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.title-duration {
+  display: flex;
+}
+
+.duration {
+  color: $purple;
+  border: 0.5px solid $white;
+  padding: 2px 6px;
+  margin-top: -4px;
+  margin-left: 8px;
+  border-radius: 10px;
+  border-color: #A9A9A9 ;
+  background-color: $white !important;
+  text-decoration: none;
+  font: inherit;
+  font-size: 15px !important;
+}
+
+
