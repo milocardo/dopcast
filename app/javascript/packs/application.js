@@ -11,7 +11,7 @@ const button = document.getElementById("load");
 
 const bodytest = document.getElementsByTagName("body");
 
-button.addEventListener("click", (event) => {
+button.addEventListener("submit", (event) => {
 	loading.style.display = "block";
 	bodytest[0].style.opacity = "0.2";
 });
