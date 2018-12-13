@@ -1,7 +1,8 @@
 .podcard-show {
   padding-top: 15px;
   padding-bottom: 15px;
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -33,6 +34,8 @@
   margin-top: 50px;
   margin-left: 80px;
   margin-right: 80px;
+  display: flex;
+  justify-content: space-around;
 
   h1 {
   font-weight: bold;
@@ -171,6 +174,11 @@
 .play-button {
   text-decoration: none;
   margin-bottom: 5px;
+
+  a {
+    color: $purple;
+  }
+
 }
 
 .title-duration {
