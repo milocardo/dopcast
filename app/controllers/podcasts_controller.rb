@@ -3,6 +3,7 @@ require 'open-uri'
 
 class PodcastsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if params.dig(:query, :types)&.include?("podcast") || params.dig(:query, :types).nil?
       request = HTTParty.get(
