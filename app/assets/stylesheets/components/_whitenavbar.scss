@@ -1,0 +1,148 @@
+/* Main navbar */
+.white-navbar {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: white;
+  transition: all 0.3s ease;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+  border-bottom: 5px;
+  border-color: $orange;
+  position: sticky !important;
+  margin-left: 180px;
+  padding-left: 20px;
+}
+
+/* Logo */
+.white-navbar img {
+  max-width: 100%;
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+/* User Avatar */
+.white-navbar .avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+/* Right section */
+.white-navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Basic navbar item */
+.white-navbar-item {
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+/* Navbar link */
+.white-navbar-link {
+  padding: 10px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: $purple;
+  display: block;
+  position: relative;
+  padding-left: 25px;
+}
+
+
+.white-navbar-link:hover {
+  color: $orange;
+  text-decoration: none;
+}
+
+/* Dropdown menu */
+.white-navbar-dropdown-menu {
+  margin-top: 15px;
+  box-shadow: 1px 1px 4px #E6E6E6;
+  border-color: #E6E6E6;
+}
+
+.white-navbar-dropdown-menu li > a {
+  transition: color 0.3s ease;
+  font-weight: lighter !important;
+  color: #999999 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  padding: 10px 20px;
+}
+
+.white-navbar-dropdown-menu li > a:hover {
+  background: transparent !important;
+  color: black !important;
+}
+.white-navbar-dropdown-menu:before {
+  content: ' ';
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 10px;
+  top: -6px;
+  background-color: white;
+  transform: rotate(45deg);
+  border-left: 1px solid #E6E6E6;
+  border-top: 1px solid #E6E6E6;
+}
+
+/* Search bar */
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width: 100%;
+}
+
+.form-control {
+  background-color: $light-purple;
+  border-style: inset;
+  border-color: $purple;
+  color: $white;
+  height: 40px;
+  padding: 6px 12px;
+  font-size: 18px;
+}
+
+.glyphicon {
+  color: $light-purple;
+}
+
+#home .navbar-form {
+  display: none;
+}
+
+.input-group-btn {
+  position: relative;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.btn-default {
+  height: 40px;
+}
+
+
+
+.white-navbar-item {
+
+
+
+  .white-navbar-link {
+    font: inherit;
+  }
+
+}
+
+
+.navbar-form {
+  display: flex;
+}

@@ -1,22 +1,25 @@
 <!-- Must be called with a div class container-text inside a page!! -->
 
-<div class="sidenav hidden-xs hidden-md">
-	<% if user_signed_in? %>
-		<%= cl_image_tag current_user.photo, class: "avatar-side" %>
-		<div class="sidenav-signin">
-			<%= link_to "Home", root_path %>
-			<a href="#later">Trending</a>
-			<a href="#history">History</a>
-			<a href="#later">Listen Later</a>
-			<a href="#playlists">Playlists</a>
-			<a href="#liked">Liked</a>
-			<a href="#subscription">Subscriptions</a>
-		</div>
-	<% else %>
-		<div class="sidenav-signout">
-			<a href="#home">Home</a>
-			<a href="#later">Trending</a>
-		</div>
-	<% end %>
+<div class="sidenav hidden-xs hidden-md" >
+  <%= link_to root_path, class: "side-navbar-brand" do %>
+  <%= image_tag "logo.png" %>
+  <% end %>
+  	<% if user_signed_in? %>
+  		<%= cl_image_tag current_user.photo, class: "avatar-side" %>
+  		<div class="sidenav-signin">
+  			<%= link_to "Home", root_path %>
+  			<a href="#later">Trending</a>
+  			<a href="#history">History</a>
+  			<a href="#later">Listen Later</a>
+  			<a href="#playlists">Playlists</a>
+  			<a href="#liked">Liked</a>
+  			<a href="#subscription">Subscriptions</a>
+  		</div>
+  	<% else %>
+  		<div class="sidenav-signout">
+  			<a href="#home">Home</a>
+  			<a href="#later">Trending</a>
+  		</div>
+  	<% end %>
 </div>
 

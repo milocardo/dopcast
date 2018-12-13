@@ -1,0 +1,28 @@
+<div class="white-navbar navbar-fixed-top">
+
+  <div class="navbar-form d-block">
+      <%= form_for :query, method: :get, url: '/podcasts' do |form| %>
+      <%= form.text_field :q, class: "form-control-banner", placeholder: "Search", value: params.dig(:query, :q) %>
+      <div class="input-group-btn">
+        <button class="btn btn-default" id="load" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+      <% end %>
+  </div>
+
+  <div class="white-navbar-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? %>
+
+    <%= link_to "Feed", feed_path, class: "white-navbar-item white-navbar-link" %>
+    <%= link_to "My Profile", my_profile_path, class: "white-navbar-item white-navbar-link" %>
+    <%= link_to "My Activities", your_actions_path, class: "white-navbar-item white-navbar-link" %>
+    <%= link_to "All Activities", all_activities_path, class: "white-navbar-item white-navbar-link" %>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "white-nav-log-button" %>
+
+    <% else %>
+
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "white-nav-log-button" %>
+
+    <% end %>
+  </div>
+</div>
