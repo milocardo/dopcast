@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :playlists
+  has_many :subscriptions
   has_many :episodes, through: :playlists
   has_many :podcasts, through: :subscriptions
   has_many :reviews
