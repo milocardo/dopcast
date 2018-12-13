@@ -16,6 +16,12 @@ Rails.application.routes.draw do
       end
   end
 
+  resources :playlists, only: [] do
+    member do
+      get "add_episode_to_playlist" => "playlists#add_episode_to_playlist"
+    end
+  end
+
   resources :podcasts do
     resources :episodes, shallow: true
     member do
