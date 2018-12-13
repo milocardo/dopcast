@@ -52,6 +52,10 @@
   }
 }
 
+#episode-show {
+  flex-direction: column !important;
+}
+
 .reviews {
   margin-left: 80px;
   margin-right: 500px;
@@ -59,6 +63,10 @@
     p {
   font-size: 20px;
   }
+}
+
+#review-info {
+  display: block !important;
 }
 
 .info-cards {
@@ -168,6 +176,10 @@
       font-weight: 600;
       font-color: $light-gray !important;
       padding-bottom: 0 !important;
+    }
+
+    img {
+      display: none;
     }
 }
 
