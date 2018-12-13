@@ -36,10 +36,10 @@
           </div>
 
             <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
-              <% if current_user.following?(@podcast) %>
-              <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-              <% elsif current_user != @podcast %>
+              <% if current_user != @podcast || current_user.nil?%>
               <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+              <% elsif current_user.following?(@podcast) %>
+              <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
               <% end %>
             </div>
 
