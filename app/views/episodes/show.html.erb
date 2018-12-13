@@ -1,4 +1,4 @@
-<%= render "whitenavbar/sidebar" %>
+<%= render "shared/whitenavbar" %>
 <%= render "shared/sidebar" %>
 <div class="container-text">
   <div class="container-show" id="episode-show">
@@ -36,22 +36,13 @@
           </div>
         </div>
       </div>
+
       <%# render 'shared/playlist_dropdown' %>
-      <%= render 'shared/loading' %>
-      <div class="info-cards">
-        <div class="pod-descript">
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <p><%= @episode.description %></p>
-            </div>
-          </div>
 
           <!-- Playlist button here -->
 
 <!--       < %= render 'shared/playlist_dropdown' % >' -->
 
-        </div>
-      </div>
     </div>
   </div>
   <%= render 'shared/loading' %>
