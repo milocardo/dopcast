@@ -2,65 +2,59 @@
 <div class="container-text">
   <div class="container-show">
     <div class="podcard-show">
-      <div class="row">
-        </div>
-        <div class="col-xs-8">
-          <div class="info-cards">
-            <div class="info-div">
-              <h1><%= @podcast.title %></h1>
-              <div class="img-info-div">
-                <div class="podcard-img">
-                  <%= image_tag @podcast.image, class: "img-responsive" %>
-                </div>
-               <div class="minor-info-div">
-                  <h2><%= @podcast.publisher %></h3>
+      <div class="col-xs-8">
+        <div class="info-cards">
+          <div class="info-div">
+            <h1><%= @podcast.title %></h1>
+            <div class="img-info-div">
+              <div class="podcard-img">
+                <%= image_tag @podcast.image, class: "img-responsive" %>
+              </div>
+              <div class="minor-info-div">
+                <h2><%= @podcast.publisher %></h3>
                   <h3>Language: <%= @podcast.language %></h3>
                   <h3>Country: <%= @podcast.country %></h3>
-               </div>
+                </div>
               </div>
             </div>
-
-
-        <div class="interaction-div">
-          <div class="vote-div">
-            <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
-            <button type="button" class="btn btn-info" aria-label="Left Align">
-              <span class="glyphicon glyphicon-menu-up glyphicon-align-center" aria-hidden="true"></span>
-              <span class="badge"><%= @podcast.get_upvotes.size %></span>
-            </button>
-            <% end %>
-            <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
-            <button type="button" class="btn btn-info" aria-label="Left Align">
-              <span class="glyphicon glyphicon-menu-down glyphicon-align-center" aria-hidden="true"></span>
-              <span class="badge"><%= @podcast.get_downvotes.size %></span>
-            </button>
-            <% end %>
-          </div>
-
-            <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
-              <% if current_user.following?(@podcast) %>
-              <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-              <% elsif current_user != @podcast %>
-              <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
-              <% end %>
+            <div class="interaction-div">
+              <div class="vote-div">
+                <%= link_to like_podcast_path(@podcast), class: "like", method: :post do %>
+                <button type="button" class="btn btn-info" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-menu-up glyphicon-align-center" aria-hidden="true"></span>
+                  <span class="badge"><%= @podcast.get_upvotes.size %></span>
+                </button>
+                <% end %>
+                <%= link_to unlike_podcast_path(@podcast), class: "like", method: :post do %>
+                <button type="button" class="btn btn-info" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-menu-down glyphicon-align-center" aria-hidden="true"></span>
+                  <span class="badge"><%= @podcast.get_downvotes.size %></span>
+                </button>
+                <% end %>
+              </div>
+              <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
+                <% if current_user.following?(@podcast) %>
+                <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+                <% elsif current_user != @podcast %>
+                <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+                <% end %>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <%= render 'shared/loading' %>
-  <% @podcast.episodes_list.each do |episode| %>
-  <div class="info-episode-list">
-    <div class="title-duration"><h3><%= episode["title"] %></h3> <div class="duration"><%= episode["audio_length"] / 60 %> min</div></div>
-    <div class="play-button"><span class="glyphicon glyphicon-play-circle"></span>
-    <%= link_to("Listen", episode["audio"], target: '_blank') %>
+    <%= render 'shared/loading' %>
+    <% @podcast.episodes_list.each do |episode| %>
+    <div class="info-episode-list">
+      <div class="title-duration"><h3><%= episode["title"] %></h3> <div class="duration"><%= episode["audio_length"] / 60 %> min</div></div>
+      <div class="play-button"><span class="glyphicon glyphicon-play-circle"></span>
+        <%= link_to("Listen", episode["audio"], target: '_blank') %>
+      </div>
+      <p> <%= episode["description"].html_safe %></p>
     </div>
-    <p> <%= episode["description"].html_safe %></p>
-  </div>
-  <% end %>
+    <% end %>
 
   <!-- <div class="reviews">
     <h3>Leave a comment below!</h3>
