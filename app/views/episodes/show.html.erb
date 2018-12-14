@@ -4,7 +4,7 @@
       <div class="col-xs-8">
         <div class="info-cards">
           <div class="info-div">
-            <h1><%= link_to(@episode.podcast.title, podcast_path(@podcast)) %></h1><br>
+            <h1><%= link_to @episode.podcast.title, podcast_path(@podcast) %></h1><br>
             <h2>Episode <%= @episode.title %></h2>
             <div class="img-info-div">
               <div class="podcard-img">
