@@ -4,9 +4,9 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href=<%= new_user_playlist_path(current_user, episode_id: @episode.id) %> >Create a new Playlist</a>
+    <a class="navbar-wagon-item navbar-wagon-link" href=<%= new_user_playlist_path(current_user, episode_id: @episode.id) %> >Create a new Playlist</a>
     <% current_user.playlists.each do |playlist| %>
-    <a class="dropdown-item" href=<%= add_episode_to_playlist_playlist_path(playlist, episode_id: @episode.id) %> ><%= playlist.name %></a>
+    <a class="navbar-wagon-item navbar-wagon-link" href=<%= add_episode_to_playlist_playlist_path(playlist, episode_id: @episode.id) %> ><%= playlist.name %></a>
     <% end %>
   </div>
 </div>
