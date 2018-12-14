@@ -77,3 +77,19 @@
 }
 
 
+.btn-friends{
+  color: $purple;
+  border: 1.5px solid $light-purple;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background-color: $white !important;
+  text-decoration: none;
+  font: inherit;
+  display: flex;
+  margin-bottom: 10px;
+}
+.btn-friends:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
