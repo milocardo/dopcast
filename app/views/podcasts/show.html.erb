@@ -33,10 +33,14 @@
                 <% end %>
               </div>
               <div class="follow-button-area" id="podcast- <%= @podcast.id %>" style="float: right">
-                <% if current_user.following?(@podcast) %>
-                <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-                <% elsif current_user != @podcast %>
-                <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+                <% if current_user %>
+                  <% if current_user.following?(@podcast) %>
+                    <%= button_to "subscribed", {action: 'unfollow', id: @podcast.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+                  <% elsif current_user != @podcast %>
+                    <%= button_to "subscribe", {action: 'follow', id: @podcast.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+                  <% end %>
+                <% else %>
+                  <%= button_to "subscribe", {action: 'new', controller: 'devise/sessions'}, method: 'get', class: 'btn btn-primary btn-follow header-align' %>
                 <% end %>
               </div>
             </div>
