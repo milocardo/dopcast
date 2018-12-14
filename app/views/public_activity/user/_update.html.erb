@@ -1,3 +1,5 @@
+<div class="container-text">
+
 <li class="list-group-item">
   <span class="glyphicon glyphicon-picture"></span>
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small>
@@ -8,3 +10,5 @@
   <% end %>
   <%= cl_image_tag a.trackable.photo, class: "img-feed" %>
 </li>
+
+</div>
