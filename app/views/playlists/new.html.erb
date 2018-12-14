@@ -1,4 +1,6 @@
-<h2>Create a new Playlist</h2>
+<div class="container-text">
+
+<h2 class="user-profile-title">Create a new Playlist</h2>
 
 <!-- <form>
   <div class="form-group">
@@ -9,12 +11,13 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
  -->
-
+<div form-playlist>
 <%= simple_form_for [current_user, @playlist] do |f| %>
   <%= f.input :name %>
   <%= f.hidden_field :episode_id, value: params["episode_id"] %>
   <%= f.submit %>
 <% end %>
+</div>
 
 
 <!--  <form action="user_playlists_path", method="post">
@@ -22,3 +25,4 @@
   <input type="submit" value="Submit">
 </form> -->
 
+</div>
