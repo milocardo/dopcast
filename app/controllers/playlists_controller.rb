@@ -28,12 +28,12 @@ class PlaylistsController < ApplicationController
     if params["playlist"]["episode_id"]
       @playlist.episodes << Episode.find(params["playlist"]["episode_id"])
     end
-    redirect_to playlist_path(@playlist)
+    redirect_to my_profile_path
   end
 
   def add_episode_to_playlist
     @playlist.episodes << Episode.find(params["episode_id"])
-    redirect_to playlist_path(@playlist)
+    redirect_to my_profile_path
   end
 
   def edit
