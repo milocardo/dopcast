@@ -18,7 +18,7 @@ class Episode < ApplicationRecord
   validates :korean_episode_id, uniqueness: true
 
   include PublicActivity::Model
-  tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   acts_as_votable
   acts_as_commentable
