@@ -5,11 +5,13 @@
     <span class="glyphicon glyphicon-download-alt"></span>
     <div class="feed-content">
       <small class="text-muted"> <div class="feed-time"><%= a.created_at.strftime('%b %e, %l:%M %p') %></div></small>
+    <div class="feed-row">
       <% if a.trackable %>
         <div class="feed-info"><%= link_to a.trackable.title, podcast_path(a.trackable) %> was added to Dopcast </div>
       <% else %>
         A podcast that is currently deleted was added.
       <% end %>
+      </div>
     </div>
   </div>
 </li>

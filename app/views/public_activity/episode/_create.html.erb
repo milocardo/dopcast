@@ -4,6 +4,7 @@
   <span class="glyphicon glyphicon-plus"></span>
   <div class="feed-content">
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small>
+  <br>
   <% if a.trackable %>
     The episode <%= link_to a.trackable.title, episode_path(a.trackable) %> of <%= link_to a.trackable.podcast.title, podcast_path(a.trackable.podcast) %> was added to Dopcast
   <% else %>
