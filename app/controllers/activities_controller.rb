@@ -19,6 +19,8 @@ class ActivitiesController < ApplicationController
   end
 
   def yours
+    # @activities = PublicActivity::Activity.order("created_at DESC").where.not(owner_type: "User", owner_id: current_user.all_following)
+
     @activities = PublicActivity::Activity.order("created_at DESC").where(owner_type: "User", owner_id: current_user).all
 
     respond_to do |format|
@@ -27,6 +29,8 @@ class ActivitiesController < ApplicationController
   end
 
   def feed
+    # @activities = PublicActivity::Activity.order("created_at DESC").all.where.not(owner_type: "User", owner_id: current_user)
+
     @activities = PublicActivity::Activity.order("created_at DESC").where(owner_type: "User", owner_id: current_user.all_following).all
 
     respond_to do |format|
