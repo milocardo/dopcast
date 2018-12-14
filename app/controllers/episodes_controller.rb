@@ -4,11 +4,11 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    if Episode.exists?(params[:id])
-      @episode = Episode.find(params[:id])
-      @podcast = Podcast.find(@episode.podcast_id)
-    elsif Episode.where(korean_episode_id: params[:id]).any?
+    if Episode.where(korean_episode_id: params[:id]).any?
       @episode = Episode.where(korean_episode_id: params[:id])[0]
+      @podcast = Podcast.find(@episode.podcast_id)
+    elsif Episode.exists?(params[:id])
+      @episode = Episode.find(params[:id])
       @podcast = Podcast.find(@episode.podcast_id)
     else
         # Search all the information of an specific episode
@@ -19,7 +19,6 @@ class EpisodesController < ApplicationController
             "Accept" => "application/json"
           }
         )
-
         # If the podcast doesnt exist yet, create a new podcast
         @episode = Episode.create(
           korean_episode_id: params[:id],

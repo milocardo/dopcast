@@ -31,7 +31,7 @@ class PodcastsController < ApplicationController
             total_episodes: response["total_episodes"],
             itunes_id: response["itunes_id"],
             image: response["image"],
-            title: response["title_original"],
+            title: response["title"],
             episodes_list: response["episodes"],
             country: response["country"],
             description: response["description"],
