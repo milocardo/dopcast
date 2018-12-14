@@ -1,19 +1,23 @@
 <li class="list-group-item">
+  <div class="feed-container">
+  <%= cl_image_tag a.trackable.follower.photo, class: "img-feed" %>
+
   <span class="glyphicon glyphicon-heart"></span>
-  <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small>
+    <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small>
+
+  <div class="feed-content">
   <% if a.trackable %>
   <% if a.trackable.followable_type == "Podcast" %>
-  <%= cl_image_tag a.trackable.follower.photo, class: "img-feed" %>
   <p><%= link_to a.trackable.follower.username, user_path(a.trackable.follower_id) %> started following <%= link_to a.trackable.followable.title, podcast_path(a.trackable.followable) %></p>
-  <%= image_tag a.trackable.followable.image, class: "img-feed" %>
   <% elsif a.trackable.followable_type == "User" %>
-  <%= cl_image_tag a.trackable.follower.photo, class: "img-feed" %>
   <p><%= link_to a.trackable.follower.username, user_path(a.trackable.follower_id) %> started following <%= link_to a.trackable.followable.username, user_path(a.trackable.followable) %></p>
-  <%= cl_image_tag a.trackable.followable.photo, class: "img-feed" %>
 
 
   <% else %>
     A following that is currently deleted was added.
   <% end %>
   <% end %>
+    </div>
+  </div>
 </li>
+

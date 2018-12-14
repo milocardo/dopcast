@@ -1,10 +1,16 @@
 <li class="list-group-item">
+ <div class="feed-container">
+  <%= image_tag a.trackable.image, class: "img-feed" %>
   <span class="glyphicon glyphicon-plus"></span>
+  <div class="feed-content">
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small>
   <% if a.trackable %>
     The episode <%= link_to a.trackable.title, episode_path(a.trackable) %> of <%= link_to a.trackable.podcast.title, podcast_path(a.trackable.podcast) %> was added to Dopcast
   <% else %>
     A podcast that is currently deleted was added.
   <% end %>
-  <%= image_tag a.trackable.image, class: "img-feed" %>
+    </div>
+  </div>
 </li>
+
+
