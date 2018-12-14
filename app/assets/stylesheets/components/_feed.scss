@@ -1,6 +1,14 @@
 .list-group-item {
 }
 
+.feed-row {
+  display: flex;
+}
+
+.feed-content {
+  display: inline;
+  flex-direction: column;
+}
 .feed-container {
   display: flex;
 
