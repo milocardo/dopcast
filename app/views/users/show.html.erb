@@ -1,43 +1,46 @@
+<div class="container-text">
+  <br>
+  <h3><%= @user.username %></h3>
+  
+<br>
+  <div class="follow-button-area" id="user- <%= @user.id %>" style="float: right">
+    <% if current_user.following?(@user) %>
+    <%= button_to "Following", {action: 'unfollow', id: @user.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
+    <% elsif current_user != @user %>
+    <%= button_to "Follow", {action: 'follow', id: @user.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+    <% end %>
+  </div>
 
-<h3><%= @user.username %></h3>
 
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+  <h2 class="user-profile-title"><%= @user.username %>'s subscriptions</h2>
 
-<div class="follow-button-area" id="user- <%= @user.id %>" style="float: right">
-  <% if current_user.following?(@user) %>
-  <%= button_to "Following", {action: 'unfollow', id: @user.id}, method: 'post', class: 'btn btn-secondary btn-unfollow header-align', remote: true %>
-  <% elsif current_user != @user %>
-  <%= button_to "Follow", {action: 'follow', id: @user.id}, method: 'post', class: 'btn btn-primary btn-follow header-align', remote: true %>
+  <% @user.all_following.each do |following| %>
+    <% if following.is_a? Podcast %>
+      <%= link_to following.title, podcast_path(following.id) %>
+    <% end %>
+  <% end %>
+
+  <h2 class="user-profile-title"><%= @user.username %>'s followers</h2>
+
+  <% @user.followers.each do |follower| %>
+    <%= link_to follower.username, user_path(follower.id) %>
+  <% end %>
+
+
+  <h2 class="user-profile-title"><%= @user.username %> is following</h2>
+
+  <% @user.all_following.each do |following| %>
+    <% if following.is_a? User %>
+      <%= link_to following.username, user_path(following.id) %>
+    <% end %>
+  <% end %>
+
+
+
+
+  <h2 class="user-profile-title"><%= @user.username %>'s playlists</h2>
+
+  <% current_user.playlists.each do |playlist| %>
+  <%= link_to playlist.name, playlist_path(playlist) %>
   <% end %>
 </div>
-
-<h2>Followers</h2>
-
-<% @user.followers.each do |follower| %>
-  <%= link_to follower.username, user_path(follower.id) %>
-<% end %>
-
-
-<h2>Following</h2>
-
-<% @user.all_following.each do |following| %>
-  <% if following.is_a? User %>
-    <%= link_to following.username, user_path(following.id) %>
-  <% end %>
-<% end %>
-
-
-
-<h2>Subscriptions</h2>
-
-<% @user.all_following.each do |following| %>
-  <% if following.is_a? Podcast %>
-    <%= link_to following.title, podcast_path(following.id) %>
-  <% end %>
-<% end %>
-
-<h2>Playlists</h2>
-
-<% current_user.playlists.each do |playlist| %>
-<%= link_to playlist.name, playlist_path(playlist) %>
-<% end %>
