@@ -20,7 +20,7 @@ class Podcast < ApplicationRecord
   validates :itunes_id, uniqueness: true, presence: true
 
   include PublicActivity::Model
-  tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   def searchable
     self

@@ -6,7 +6,7 @@ class Playlist < ApplicationRecord
   include PgSearch
   multisearchable against: %i[name user_id]
   include PublicActivity::Model
-  tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   acts_as_votable
   acts_as_commentable
