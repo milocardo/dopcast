@@ -18,10 +18,10 @@ class Search
 
   TYPES = %w[podcast episode playlist]
   DURATIONS = [
-    [15, '15 min'],
-    [30, '30 min'],
-    [45, '45 min'],
-    [60, '60 min'],
+    [15, '0 - 15 min'],
+    [30, '0 - 30 min'],
+    [45, '0 - 45 min'],
+    [60, '0 - 60 min'],
     [1000, 'more than 1 hour']
   ]
   LANGUAGES = %w[English Spanish French Portuguese]
