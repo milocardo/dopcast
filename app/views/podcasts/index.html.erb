@@ -1,6 +1,7 @@
 <% if @episodes.blank? && @podcasts.blank? %>
 
   <div class="col-xs-12 col-sm-12 col-md-12 container-text">
+    <br>
     <h3><strong>No search results</strong></h3>
   </div>
 
@@ -21,22 +22,24 @@
         </div>
       <% end %>
     </div>
-
-    <% if @episodes.present? %>
-     <h3><strong>Episodes</strong></h3>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <% if @episodes.present? %>
       <br>
-        <% if @episodes.present? %>
-          <%= render 'shared/loading' %>
-          <% @episodes.each do |episode| %>
-            <li class="episode-list-item">
-              <div class="episode-list-img"><%=link_to( image_tag(episode.searchable.image), episode_path(episode.searchable.id), :class=>"img-size") %></div>
-              <div class="episode-list-info"> <h3><%= link_to(episode.title, episode_path(episode.searchable.id)) %></h3>
-                <h6> <%= episode.podcast.title %> </h6>
-                <p>Language: <%= episode.podcast.language %></p>
-              </div>
-            </li>
+       <h3><strong>Episodes</strong></h3>
+        <br>
+          <% if @episodes.present? %>
+            <%= render 'shared/loading' %>
+            <% @episodes.each do |episode| %>
+              <li class="episode-list-item">
+                <div class="episode-list-img"><%=link_to( image_tag(episode.searchable.image), episode_path(episode.searchable.id), :class=>"img-size") %></div>
+                <div class="episode-list-info"> <h3><%= link_to(episode.title, episode_path(episode.searchable.id)) %></h3>
+                  <h6> <%= episode.podcast.title %> </h6>
+                  <p>Language: <%= episode.podcast.language %></p>
+                </div>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
