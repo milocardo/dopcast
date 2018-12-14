@@ -1,6 +1,3 @@
-# require 'json'
-# require 'open-uri'
-
 class PodcastsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -48,7 +45,6 @@ class PodcastsController < ApplicationController
         end
         @podcasts << podcast if podcast.persisted?
       end
-      #@podcasts = PgSearch.multisearch(params[:query][:q]).where(:searchable_type => "Podcast")
     end
 
     if params.dig(:query, :type)&.include?("episode") || params.dig(:query, :type).nil?
@@ -119,10 +115,7 @@ class PodcastsController < ApplicationController
         )
         @episodes << episode
       end
-
-      # @episodes = PgSearch.multisearch(params[:query][:q]).where(:searchable_type => "Episode")
     end
-
     @playlists = PgSearch.multisearch(params[:query][:q]).where(:searchable_type => "Playlist")
   end
 
@@ -130,20 +123,6 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
   end
 
-  def show_by_id
-    if params[:id].present?
-
-      url = "https://itunes.apple.com/search?term=#{params[:id]}"
-      podcast_serialized = open(url).read
-      @podcast_id = JSON.parse(podcast_serialized)
-
-      url = "https://itunes.apple.com/search?term=#{params[:id]}"
-      episodes_serialized = open(url).read
-      @episode = JSON.parse(episodes_serialized)
-    else
-      @podcast = Podcast.find(params[:id])
-    end
-  end
   # def index_subscription
   #   @podcasts = User.podcasts
   # end
@@ -183,7 +162,7 @@ class PodcastsController < ApplicationController
     @follow = Follow.find_by(follower: @current_user, followable: @podcast)
     respond_to :js
     respond_to do |format|
-      format.js {render inline: "location.reload();" }
+      format.js { render inline: "location.reload();" }
     end
   end
 
@@ -192,7 +171,7 @@ class PodcastsController < ApplicationController
     current_user.stop_following(@podcast)
     respond_to :js
     respond_to do |format|
-      format.js {render inline: "location.reload();" }
+      format.js { render inline: "location.reload();" }
     end
   end
 
@@ -213,21 +192,11 @@ class PodcastsController < ApplicationController
   private
 
   def podcast_params
-    params.require(:podcast).permit(
-      :itunes_id,
-      :image,
-      :title,
-      :episodes_list,
-      :country,
-      :description,
-      :language,
-      :korean_id,
-      :lastest_pub_date_ms,
-      :earliest_pub_date_ms,
-      :publisher,
-      :genres,
-      :extra
-    )
+    params.require(:podcast).permit(:itunes_id, :image, :title, :episodes_list,
+                                    :country, :description, :language,
+                                    :korean_id, :lastest_pub_date_ms,
+                                    :earliest_pub_date_ms, :publisher,
+                                    :genres, :extra)
   end
 
   def query_params
