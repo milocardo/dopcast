@@ -176,6 +176,7 @@
   flex-direction: column;
   // align-items: center;
   justify-content: space-between;
+  width: 100%;
 
       h3 {
       font-size: 18px;
@@ -188,6 +189,10 @@
 
     img {
       display: none;
+    }
+
+    p {
+      font-size: 18px;
     }
 }
 
