@@ -8,6 +8,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "webpack": "^4.29.6",
     "webpack-dev-server": "2.11.2"
   }
 }
